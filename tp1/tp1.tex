@@ -1,5 +1,6 @@
 \documentclass[chaptersright]{informeutn}
-
+\usepackage{graphicx}
+\usepackage{circuitikz}
 % Datos del informe
 \materia{Electronica Aplicada}
 \titulo{Trabajo Práctico 1}
@@ -41,6 +42,40 @@
     prácticos, reafirmando así su utilidad práctica y formativa.
 
   \chapter{Planeamiento e introduccion teorica}
+    A continuación se va a explicar el funcionamiento de cada uno de los siguientes bloques de la fuente:
+    \begin{itemize}
+      \item Transformador.
+      \item Rectificacion.
+      \item Filtrado.
+      \item Regulacion.
+      \item Otros.
+    \end{itemize}
+        
+      \section{Transformador}
+        El transformador cumple dos funciones principales:
+        \begin{itemize}
+          \item Proporciona aislamiento galvanico entre la red de 220 V y la fuente mediante acoplamiento magnetico.
+          \item Reduce la tension de 220 V a un valor adecuado (como 12 V o 24 V) segun las necesidades de la fuente.
+        \end{itemize}
+        A continuacion, un esquematico del transformador:
+        
+
+        \begin{figure}[h]
+          \centering
+          \includegraphics[width=0.5\textwidth]{imagenes/Sch_Trafo.png}
+          \caption{Texto de la leyenda (caption)}
+          \label{fig:etiqueta}
+        \end{figure}
+
+      \section{Rectificacion}
+        La función del rectificador es convertir la tensión alterna en una continua pulsante, el circuito siguiente 
+        realiza esa función y se lo conoce como puente de diodos, previamente vemos el comportamiento de un diodo 
+        individual.
+        El rectificador se encarga de convertir la onda senoidal alterna en una continua pulsante. El protagonista
+        principal es el puente de diodos.
+
+              \section{filtrado}
+
 
   \chapter{Ensayos y mediciones}
     
