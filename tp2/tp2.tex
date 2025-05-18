@@ -282,8 +282,141 @@
             FR = \frac{V_{eficaz-ripple}}{V_{carga}} \times 100\% = \frac{0.812V}{26.62V} \times 100\% = 3.0503\%
         \end{equation}
 
-        \section{Fuente regulada} 
+    \section{Fuente regulada}
+      \begin{wrapfigure}{r}{0.4\textwidth}
+        \centering
+        \includegraphics[width=.4\textwidth]{pictures/reg_pcb.jpg}
+        \caption{Fuente regulada en la PCB.}
+      \end{wrapfigure}
+
+      Las pruebas de la fuente regulada se hacen ya con toda la placa poblada. Para estas pruebas se utilizo el
+      transformador en punto alto y ademas se conecto la fuente que genera el potencial negativo. Esta segunda fuente
+      cumple el proposito de agregarle un extra de potencial negativo a la referencia de ajuste del LM317. Como
+      resultado, el rango efectivo de ajuste del LM317 es ahora de 0 a 30V, mientras que sin la fuente negativa,
+      el rango es de 1.25 a 30V.
+
+      Como el objetivo del regulador es el de mejorar la salida, las mediciones que se van a hacer, son para
+      compararlas con las de la fuente no regulada. De esta forma podemos destacar las ventajas y desventajas del uso
+      de un regulador como el LM317
+
+      Con toda la placa armada, esta se colocó en el banco de pruebas provisto por la facultad para realizar las
+      mediciones. Es importante destacar que, debido a la potencia que discipa el LM317, es estrictamente necesario
+      colocar el mismo en un discipador con pasta termica o algun otro medio de transferencia termica. El motivo de
+      esto se va a explicar mas adelante.
+
+      \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.8\textwidth]{pictures/reg_banco-prueb.jpeg}
+        \caption{Placa montada en el banco de pruebas.}
+      \end{figure}
+
+      \subsection{Medicion de Regulacion de Voltaje}
+        Nuevamente, para las mediciones de la regulacion de voltaje, se toma una medicion del potencial en la salida de
+        la fuente sin carga y con carga plena:
+        \begin{figure}[h]
+          \centering
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              V_{vacio} &= 15.84V\\[6pt]
+              V_{carga} &= 15.54V
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              RV &= \frac{V_{vacio} - V_{carga}}{V_{carga}} \times 100\%\\[6pt]
+              RV &= \frac{15.84V - 15.54V}{15.54V} \times 100\%\\[6pt]
+              RV &= 1.9\%
+            \end{align*}
+          \end{minipage}
+        \end{figure}
+
+      \subsection{Medicion de Ripple}
+        Para la medicion de ripple, utilizamos un osciloscopio debido a que el LM317 tiene una atencuacion de al
+        rededor de 1000 veces el ripple de entrada y ademas de que tiene una muy alta frecuencia. Esto imposibilita el
+        uso de un multimetro True-RMS y ademas implica que la medicion del ripple puede estar errada. Con el
+        osciloscopio obtuvimos lo siguiente:
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=0.8\textwidth]{pictures/reg_osc-ripp.jpg}
+          \caption{Ripple de salida de la fuente regulada, 40mv/div.}
+        \end{figure}
+
+        Por lo tanto:
+        \begin{figure}[h]
+          \centering
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              V_{pp-ripple} &= 80mV\\[6pt]
+              V_{carga} &= 15.54V
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              FR &= \frac{V_{ef-ripple}}{V_{carga}} \times 100\%\\[6pt]
+              FR &= \frac{\frac{40mV}{\sqrt{2}}}{15.54V} \times 100\%\\[6pt]
+              FR &= 0.18\%
+            \end{align*}
+          \end{minipage}
+        \end{figure}
+
+      \subsection{Prueba termica}
+        \begin{wrapfigure}{r}{0.4\textwidth}
+          \centering
+          \includegraphics[width=.4\textwidth]{pictures/reg_discipador.jpeg}
+          \caption{Solucion de discipacion del banco de pruebas.}
+        \end{wrapfigure}
+        El motivo de esta prueba es comprobar que la solucion de discipacion termica es adecuada para la aplicacion y
+        las condiciones de trabajo del LM317. Dado que utilizamos el empaquetado TO-220, la potencia maxima que puede
+        discipar el LM317 es de 15W. Ademas, en la hoja de datos se indica que la temperatura maxima de la union
+        (\textit{Maximum Junction Tempeure}) es de 125°C. Si la solucion de discipacion termica que empleamos no
+        es capaz de mantener utemperatura de juntura igual o menor a 125°C, con el uso, la fuente va a reducir la
+        potencia de salida para preservar su propia integridad y bajar la temperatura de juntura.
+
+        La prueba consiste en hacer que el LM317 este en las condiciones mas extremas de trabajo, siendo estas la
+        discipacion de 15W constantemente. Sabiendo que la corriente maxima del LM317 es de 1.5A, se puede determinar
+        que la caida de tension tiene que ser 10V para que caigan 15W.
+
+        Debido a que no es posible medir la temperatura de la juntura del silicio con el sustrato, el fabricante
+        provee una relacion de la temperatura en la carcasa con la temperatura de juntura. Por eso, se mide la
+        temperatura de carcasa ($T_C$) y con la formula de temperatura de juntura podemos saber si estamos
+        debajo del limite.
+
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=0.8\textwidth]{pictures/reg_prueb-term.jpeg}
+          \caption{Prueba termica. A la izquierda esta la temperatura de carcasa, abajo a la derecha la corriente y
+                   arriba a la derecha la caida de tension en el LM317}
+        \end{figure}
+
+        Por lo tanto:
+        \begin{figure}[h]
+          \centering
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              T_C &= 52^\circ C\\[6pt]
+              V_{LM317} &= 10.09V\\[6pt]
+              I_L &= 1.511A
+            \end{align*}
+          \end{minipage}
+          \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+              T_J &= \Theta_{JC} \cdot P_D + T_C\\[6pt]
+              T_J &= 5\frac{^\circ C}{W} \cdot (10.09V \cdot 1.511A) + 52^\circ C\\[6pt]
+              T_J &= 5\frac{^\circ C}{W} \cdot 15.25W + 52^\circ C\\[6pt]
+              T_J &= 128.25^\circ C
+            \end{align*}
+          \end{minipage}
+        \end{figure}
+
+        A pesar de que la temperatura de juntura calculada esta por encima de los 125°C, podemos considerar como que
+        el regulador va a compensar una pequeña cantidad de la potencia de salida para regular su temperatura de
+        juntura. Ademas, segun las mediciones esta excedido en potencia, por lo que puede ser que la temperatura de
+        juntura real sea menor. Por lo tanto, la solucion de discipacion de temperatura es la adecuada.
 
   \chapter{Conclusiones}
 
 \end{document}
+
+
+
+
