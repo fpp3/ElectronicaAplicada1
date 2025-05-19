@@ -100,15 +100,14 @@
       de la fuente utilizando un solo bobinado del transformador (12v) y, otro en el punto alto de la fuente utilizando
       los dos bobinados (24v).
 
-      \subsection{Medición de ripple}
-        Para la medicion de ripple en ambos, punto bajo y punto alto, se midio la tensión de salida de la fuente no
-        regulada en vacío, y luego se conecto a la misma una carga variable (reostato) para analizar qué tensión
+      \subsection{Mediciones y cálculos: punto bajo}
+        Para este caso se usó solamente un bobinado del transformador. Se midió la tensión de salida de la fuente no
+        regulada en vacío, y luego se conectó a la misma una carga variable (reostato) para analizar qué tensión
         otorga la fuente según la corriente que pasa por la carga, hasta un máximo de 1.5A. Con estos datos se puede
         calcular la resistencia interna del transformador más la de los diodos, el factor de ripple, etc.
 
         Las mediciones tomadas y los cálculos correspondientes se muestran a continuación:
 
-        \subsubsection{Punto bajo}
         \begin{figure}[H]
         % Minipage para la tabla
         \begin{minipage}{0.35\textwidth}
@@ -170,35 +169,52 @@
         de la corriente $I_{out}$ sobre una carga variable}
         \label{fig:curva_salida_bajo}
         \end{figure}
+
+        \subsubsection{Resistencia interna}
         
         Para calcular la resistencia interna se considera:
 
-        \begin{equation}
+        \begin{equation*}
             R_{int} = \frac{V_{vacio} - V_{carga}}{I_{max}}= \frac{17.65V - 13.16V}{1.5A} = 2.99\Omega
-        \end{equation}
+        \end{equation*}
+
+        \subsubsection{Regulación de voltaje}
 
         Por otro lado, se puede determinar el desempeño de la fuente para mantener la tensión constante frente a
         condiciones sin carga y con carga máxima mediante el siguiente cálculo:
 
-        \begin{equation}
+        \begin{equation*}
             RV = \frac{V_{vacio} -V_{carga}}{V_{carga}} \times 100\% = \frac{17.65V-13.16V}{13.16V} \times 100\% = 34.1185\%
-        \end{equation}
+        \end{equation*}
+
+        \subsubsection{Factor de ripple}
         
         Finalmente, el factor de ripple, que es un indicador de la efectividad del filtro se define como:
 
-        \begin{equation}
+        \begin{equation*}
             FR = \frac{V_{eficaz-ripple}}{V_{carga}} \times 100\%
-        \end{equation}
+        \end{equation*}
 
         El $V_{eficaz-ripple}$ es la tensión medida con el multimétro establecido en escala de tensión alterna.
         Para ello, nos aseguramos de que el multimétro mida valor verdadero eficaz (true RMS) para realizar una
         medición más acertada. Considerando entonces el valor de $V_{eficaz-ripple}$ medido:
 
-        \begin{equation}
+        \begin{equation*}
             FR = \frac{0.873V}{13.16V} \times 100\% = 6.6337\%
-        \end{equation}
+        \end{equation*}
 
-        \subsubsection{Punto alto}
+        Además del uso del multimétro, nos pareció interesante observar la forma de onda de la tensión de salida de la
+        fuente con el osciloscopio. De esta manera también pudimos observar el ripple calculado.
+        \begin{figure}[h!]
+          \centering
+          \includegraphics[width=0.8\textwidth]{pictures/ripple_fuente-nreg.jpeg}
+          \caption{Tensión de salida y observación del ripple de la fuente no regulada.}
+        \end{figure}
+
+        \subsection{Mediciones y cálculos: punto alto}
+            Se procede de la misma manera que en el punto bajo, pero esta vez utilizando los dos bobinados del
+            transformador:
+
         \begin{figure}[H]
 
         % Minipage para la tabla
@@ -262,25 +278,31 @@
         \label{fig:curva_salida_alto}
         \end{figure}
 
+        \subsubsection{Resistencia interna}
+
         Se calcula nuevamente la resistencia interna, ya que al utilizar los dos bobinados del transformador, ésta
         debe ser algo mayor:
 
-        \begin{equation}
+        \begin{equation*}
             R_{int} = \frac{V_{vacio} - V_{carga}}{I_{max}}= \frac{36.75V - 26.62V}{1.5A} = 6.7533\Omega
-        \end{equation}
+        \end{equation*}
+
+        \subsubsection{Regulación de voltaje}
 
         El desempeño de la fuente en el punto alto para mantener la tensión constante en distintas condiciones (sin carga
         y con carga máxima) es:
 
-        \begin{equation}
+        \begin{equation*}
             RV = \frac{V_{vacio} -V_{carga}}{V_{carga}} \times 100\% = \frac{36.75V-26.62V}{26.62V} \times 100\% = 38.0541\%
-        \end{equation}
+        \end{equation*}
+
+        \subsubsection{Factor de ripple}
 
         El factor de ripple en este caso, con un $V_{eficaz-ripple}=0.812V$ medido es:
 
-        \begin{equation}
+        \begin{equation*}
             FR = \frac{V_{eficaz-ripple}}{V_{carga}} \times 100\% = \frac{0.812V}{26.62V} \times 100\% = 3.0503\%
-        \end{equation}
+        \end{equation*}
 
     \section{Fuente regulada}
       \begin{wrapfigure}{r}{0.4\textwidth}
