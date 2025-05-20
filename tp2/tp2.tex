@@ -353,15 +353,27 @@
             interrumpe temporalmente su operación. Una vez que desaparece la condición que provocó la falla, el 
             dispositivo retoma su funcionamiento normal de forma automática.
 
-      \section{otros}
+      \section{Otros}
         \subsection{Fuente auxiliar}
-          En algunos escenarios, es necesario que la fuente tenga como tension minima $0\V$ y no ese $1.25\V$, por lo
-          que es necesario contrarrestar dicha tension de alguna forma. en un diseño de fuente hay 2 opciones.
-          \begin{itemize}
-            \item Realzar un bobinado auxiliar al transformador.
-            \item utilizar una fuente auxiliar.
-          \end{itemize}
-        
+          Debido a la limitacion de voltaje minimo de salida impuesto por el LM317 de 1.25\,V, si se quisiese poder
+          regular el voltaje de 0 a 30\,V, es necesario suplementar el potencial minimo de forma negativa al pin de
+          regulacion del LM317. Para ello, se puede emplear una segunda fuente, aparte de la fuente principal, que
+          cumple el proposito de proveerle al LM317 ese potencial extra de -1.25\,V. Esta fuente no tiene que tener nada
+          de especial. Lo importante es que su terminal positivo este conectado al punto donde estaba la masa de la
+          resistencia ajustable, y que esa masa se conecte al terminal negativo de la fuente auxiliar. De esta forma
+          el pin de ajuste del LM317 tiene ese potencial negativo extra necesario para poder regular hasta 0\,V.
+
+        \subsection{Ensamblaje}
+          La placa y los componentes fueron adquiridos gracias al profesor titular de la catedra, quien armó el kit
+          con todos los componentes indispensables para el desarrollo del trabajo practico. Componentes como el
+          transformador, gabinete, interruptores, potenciometro, discipador y etc. pueden ser adquiridos para poder
+          tener una fuente 100\% completa al finalizar el trabajo practico. Nosotros optamos por no comprar esos
+          componentes.
+          \begin{figure}[!h]
+            \centering
+            \includegraphics[width=1\textwidth]{pictures/components.jpg}
+            \caption{Componentes provistos en el kit.}
+          \end{figure}
 
   \chapter{Ensayos y mediciones}
     Desde la recepcion de los componentes hasata el armado final de la placa, se fueron realizando multiples pruebas
