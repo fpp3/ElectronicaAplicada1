@@ -162,7 +162,114 @@
         \begin{equation*}
           C = \frac{2\A}{2 \cdot 100\Hz \cdot 34\V}
         \end{equation*}
+      
+      \section{Regulación}
+        \subsection{Introduccion}
+          Aun que ya tengamos nuestra señal rectificada y filtrada, es necesario incluir en nuestra fuente algun
+          dispositivo que se encargue de que, con las fluctuaciones de corriente debido a las distintas cargas, la
+          tension sea siempre la misma. Para ello se utiliza un regulador lineal, en este caso, ajustable como es el
+          LM317. El regulador, ademas de mantener una salida de tension constante, reduce el ripple de la señal en el
+          orden de unas 1000 veces.
+          
+        \subsection{Especificaciones y calculos}
+          El LM317, se comercializa en diferentes formatos, con los cuales varian el factor de forma y la potencia
+          disipada. Los mas comunes son el TO-220 y el TO-3, cuyos encapsulados disipan $15\W$ y $20\W$ respectivamente.
 
+          \begin{figure}[H]
+            \centering
+            \begin{minipage}[b]{0.35\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pictures/to220.jpg}
+                \caption*{TO-220}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[b]{0.35\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{pictures/to3.jpg}
+                \caption*{TO-3}
+            \end{minipage}
+          \end{figure}
+          
+          En nuestro caso, empleamos el formato TO-220.\\
+         
+          \begin{center}
+            \begin{minipage}{0.45\textwidth}
+              \centering
+              \includegraphics[width=\linewidth]{pictures/Salida_lm317.png}
+            \end{minipage}%
+          \hfill
+            \begin{minipage}{0.5\textwidth}
+              Por otro lado, el regulador cuenta con 3 terminales: INPUT, OUTPUT y ADJ. Entre OUTPUT y ADJ se establece
+              una tensión constante $V_{REF} = 1.25\,\mathrm{V}$. Además, $I_{ADJ} = 50\,\mu\mathrm{A}$ \quad y \quad
+              $I_1 = I_{REF} = \dfrac{V_{REF}}{R_1}$.
+            \end{minipage}
+          \end{center}
+
+        En cuanto a los limites de operacion:
+
+        \begin{center}
+          $I_{MAX}=1.5\A \qquad V_{Diff-MAX}=V_{in}-V_{out}=40\V \qquad T_{juntura-max}=125\Celsius$ 
+        \end{center}
+        
+        ahora para el calculo de la tension de salida:
+
+        \begin{align*}
+          V_{OUT} &= I_1 \times R_1 + \left(I_1 + I_{ADJ}\right) \times R_2 
+          = I_1 \times R_1 + I_1 \times R_2 + I_{ADJ} \times R_2 \\
+          V_{OUT} &= I_1 (R_1 + R_2) + I_{ADJ} \times R_2 
+          = \frac{1.25}{R_1} (R_1 + R_2) + \underbrace{I_{ADJ} \times R_2}_{50\,\uA \times 5\,\kohm = 0.25\,\V}
+        \end{align*}
+        
+        Despreciando el último término la ecuación nos queda:
+        
+        \[
+        V_{OUT} = 1.25 \left(1 + \frac{R_2}{R_1}\right)
+        \]
+        
+        \[
+        R_2 : \text{Potenciómetro} \quad (0 \leq R_2 \leq 5000)
+        \]
+        
+        \[
+        \text{Cuando } R_2 = 0
+        \]
+        
+        \[
+        V_{OUT} = 1.25 \left(1 + \frac{0}{R_1}\right) = 1.25\,\V
+        \]
+        
+        Por lo que el valor mínimo que podemos obtener en esta fuente es \textbf{1.25\,V}.
+    
+        \subsection{Protecciones}
+          El regulador LM317 cuenta con diversas protecciones integradas que garantizan su funcionamiento seguro ante
+          condiciones anómalas:
+          
+          \begin{itemize}
+              \item \textbf{Protección contra sobrecorriente:} Cuando la corriente de salida supera el límite permitido, 
+                el regulador activa un mecanismo de protección que evita daños internos.
+          
+              \item \textbf{Protección térmica:} Si la disipación de calor no es adecuada, debido por ejemplo a un 
+                disipador insuficiente, la temperatura de la unión puede incrementarse más allá del valor seguro. En este caso, se activa una protección interna para evitar el sobrecalentamiento.
+          
+              \item \textbf{Límite de operación segura del transistor de salida:} Aunque no se supere el límite de 
+                corriente, si existe una gran diferencia de potencial entre la entrada y la salida, puede ocurrir una 
+                disipación de potencia que exceda la capacidad del regulador. En estas condiciones, también entra en 
+                acción la protección interna.
+          \end{itemize}
+          
+          \textbf{Nota:} En todos los casos anteriores, cuando se activa alguna protección interna, el regulador 
+            interrumpe temporalmente su operación. Una vez que desaparece la condición que provocó la falla, el 
+            dispositivo retoma su funcionamiento normal de forma automática.
+
+      \section{otros}
+        \subsection{Fuente auxiliar}
+          En algunos escenarios, es necesario que la fuente tenga como tension minima $0\V$ y no ese $1.25\V$, por lo
+          que es necesario contrarrestar dicha tension de alguna forma. en un diseño de fuente hay 2 opciones.
+          \begin{itemize}
+            \item Realzar un bobinado auxiliar al transformador.
+            \item utilizar una fuente auxiliar.
+          \end{itemize}
+        
 
   \chapter{Ensayos y mediciones}
     Desde la recepcion de los componentes hasata el armado final de la placa, se fueron realizando multiples pruebas
