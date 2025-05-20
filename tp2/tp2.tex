@@ -70,13 +70,28 @@
 
 
       \section{Rectificacion}
-        La función del rectificador es convertir la tensión alterna en una continua pulsante, el circuito siguiente 
-        realiza esa función y se lo conoce como puente de diodos, previamente vemos el comportamiento de un diodo 
-        individual.
-        El rectificador se encarga de convertir la onda senoidal alterna en una continua pulsante. El protagonista
-        principal es el puente de diodos.
+        \subsection{Principio de funcionamiento}
+          La función del rectificador es convertir la tensión alterna en una continua pulsante, el circuito que cumple 
+          esa función se lo conoce como puente de diodos. Como el mismo es de onda completa y no de media onda, si la 
+          entrada es una onda senoidal de 50$\Hz$, a la salida obtenemos una señal pulsante con el doble de la 
+          frecuencia, en este caso, 100$\Hz$.\\ 
+          A continuacion un esquematico de el funcionamiento del puente de diodos en ambos semiciclos:
+        \subsection{Eleccion de diodos}
+          Primero necesitamos saber la corriente maxima que va a circular por el puente. La corriente maxima continua
+          que entrega el LM317 es $1.5\A$, pero, por cortos periodos de tiempo, puede entregar hasta $2.1\A$.\\
+          Teniendo en cuenta lo anterior mencionado, y sabiendo que por cada rama del puente de diodos pasa la mitad de
+          la corriente total, podemos determinar que como maximo, por cada diodo va a pasar $1.05\A$, superando el
+          maximo de la serie 1N400X (1-7). Debido a esto, elegimos diodos de 3A de la serie 1N540X (1-8) ya que diodos
+          de $2\A$ no se fabrican.
 
-              \section{filtrado}
+
+      \section{Filtrado}
+        Para alimentar circuitos de corriente continua no podemos usar la onda pulsante que sale del puente
+        rectificador, necesitamos "aplanarla", para esto se usan capacitores que filtran la señal.\\ 
+        La Formula utilizada para calcular la capcidad es:\\ 
+        \begin{equation*}
+            C=\frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
+        \end{equation*}
 
   \chapter{Ensayos y mediciones}
     Desde la recepcion de los componentes hasata el armado final de la placa, se fueron realizando multiples pruebas
@@ -436,7 +451,15 @@
         juntura real sea menor. Por lo tanto, la solucion de discipacion de temperatura es la adecuada.
 
   \chapter{Conclusiones}
-
+    En este trabajo pudimos comprender en profundidad el funcionamiento de cada una de las etapas que componen una fuente
+    de alimentación lineal regulada, desde la transformación y rectificación hasta el filtrado y la regulación final.\\ 
+   También analizamos la importancia de incorporar un regulador de tensión, observando cómo mejora la estabilidad de la
+   salida y comparando su comportamiento frente a una fuente sin regulación. Esto nos permitió visualizar de forma
+   práctica las ventajas que aporta en cuanto a protección y confiabilidad.\\ 
+   Sin embargo, también vimos que este tipo de fuentes tienen sus limitaciones: si se las exige demasiado, tienden a 
+   disipar gran parte de la energía en forma de calor, lo que afecta su eficiencia. Por lo tanto, son una buena solución
+   en aplicaciones de baja o media exigencia, pero no siempre resultan viables cuando se requiere alta potencia o eficiencia energética.
+    
 \end{document}
 
 
