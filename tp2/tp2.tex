@@ -1,13 +1,5 @@
 \documentclass[chaptersright]{informeutn}
-\usepackage{tikz}
-\usetikzlibrary{plotmarks}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage{caption}
-\captionsetup{justification=centering}
-\usepackage{graphicx}
 \usepackage{circuitikz}
-\usepackage{wrapfig}
 
 % Datos del informe
 \materia{Electronica Aplicada}
@@ -123,7 +115,7 @@
 
         Las mediciones tomadas y los cálculos correspondientes se muestran a continuación:
 
-        \begin{figure}[H]
+        \begin{figure}[h!]
         % Minipage para la tabla
         \begin{minipage}{0.35\textwidth}
         \centering
@@ -220,7 +212,7 @@
 
         Además del uso del multimétro, nos pareció interesante observar la forma de onda de la tensión de salida de la
         fuente con el osciloscopio. De esta manera también pudimos observar el ripple calculado.
-        \begin{figure}[h!]
+        \begin{figure}[!h]
           \centering
           \includegraphics[width=0.8\textwidth]{pictures/ripple_fuente-nreg.jpeg}
           \caption{Tensión de salida y observación del ripple de la fuente no regulada.}
@@ -230,8 +222,7 @@
             Se procede de la misma manera que en el punto bajo, pero esta vez utilizando los dos bobinados del
             transformador:
 
-        \begin{figure}[H]
-
+        \begin{figure}[!h]
         % Minipage para la tabla
         \begin{minipage}{0.35\textwidth}
         \centering
@@ -341,7 +332,7 @@
       colocar el mismo en un discipador con pasta termica o algun otro medio de transferencia termica. El motivo de
       esto se va a explicar mas adelante.
 
-      \begin{figure}[h!]
+      \begin{figure}[!h]
         \centering
         \includegraphics[width=0.8\textwidth]{pictures/reg_banco-prueb.jpeg}
         \caption{Placa montada en el banco de pruebas.}
@@ -350,7 +341,7 @@
       \subsection{Medicion de Regulacion de Voltaje}
         Nuevamente, para las mediciones de la regulacion de voltaje, se toma una medicion del potencial en la salida de
         la fuente sin carga y con carga plena:
-        \begin{figure}[h]
+        \begin{figure}[!h]
           \centering
           \begin{minipage}{0.4\textwidth}
             \begin{align*}
@@ -372,14 +363,14 @@
         rededor de 1000 veces el ripple de entrada y ademas de que tiene una muy alta frecuencia. Esto imposibilita el
         uso de un multimetro True-RMS y ademas implica que la medicion del ripple puede estar errada. Con el
         osciloscopio obtuvimos lo siguiente:
-        \begin{figure}[h!]
+        \begin{figure}[H]
           \centering
           \includegraphics[width=0.8\textwidth]{pictures/reg_osc-ripp.jpg}
           \caption{Ripple de salida de la fuente regulada, 40mv/div.}
         \end{figure}
 
         Por lo tanto:
-        \begin{figure}[h]
+        \begin{figure}[!h]
           \centering
           \begin{minipage}{0.4\textwidth}
             \begin{align*}
@@ -418,7 +409,7 @@
         temperatura de carcasa ($T_C$) y con la formula de temperatura de juntura podemos saber si estamos
         debajo del limite.
 
-        \begin{figure}[h!]
+        \begin{figure}[!h]
           \centering
           \includegraphics[width=0.8\textwidth]{pictures/reg_prueb-term.jpeg}
           \caption{Prueba termica. A la izquierda esta la temperatura de carcasa, abajo a la derecha la corriente y
@@ -426,7 +417,7 @@
         \end{figure}
 
         Por lo tanto:
-        \begin{figure}[h]
+        \begin{figure}[!h]
           \centering
           \begin{minipage}{0.4\textwidth}
             \begin{align*}
