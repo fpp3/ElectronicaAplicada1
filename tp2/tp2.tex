@@ -42,48 +42,127 @@
     prácticos, reafirmando así su utilidad práctica y formativa.
 
   \chapter{Planeamiento e introduccion teorica}
-    A continuación se va a explicar el funcionamiento de cada uno de los siguientes bloques de la fuente:
+    Para la realizacion del trabajo practico, es necesario tener un conocimiento basico de los elementos, etapas y
+    procedimientos los cuales se ven involucrados. Entre ellos estan:
     \begin{itemize}
       \item Transformador.
       \item Rectificacion.
       \item Filtrado.
       \item Regulacion.
-      \item Otros.
+      \item Ensamblado.
     \end{itemize}
-        
+
       \section{Transformador}
         El transformador cumple dos funciones principales:
         \begin{itemize}
           \item Proporciona aislamiento galvanico entre la red de 220 V y la fuente mediante acoplamiento magnetico.
-          \item Reduce la tension de 220 V a un valor adecuado (como 12 V o 24 V) segun las necesidades de la fuente.
+          \item Reduce la tension de 220 V a un valor determinado por la relacion entre el bobinado de entrada y el 
+            boninado de salida, acorde a las necesidades de lo que se busca alimentar.
         \end{itemize}
-        A continuacion, un esquematico del transformador:
-        
+
+        Para este trabajo practico, se emplea un transformador de $12+12V$. Esto significa que el transformador tiene
+        dos cables de entrada, y tres de salida. De los tres cables, dependiendo de cual se tome como referencia, el
+        transformador puede utilizarse como una fuente con salida positiva y negativa, donde por un lado hay $+12V$ y
+        por el otro $-12V$, o como una fuente con dos diferentes salidas de voltaje, del mismo signo, teniendo $+12V$ o
+        $+24V$. Para el trabajo practico, se utilizo el transformador como fuente $+12V/+24V$. Para ello, se conecto
+        uno de los terminales de la punta del bobinado secundario como referencia, y con un interruptor SPDT
+        (\textit{Singe-Pole Doble-Throw}), es posible seleccionar si se usa el 'punto alto' o el 'punto bajo' del
+        transformador.
+
+        \begin{figure}[!h]
+          \centering
+          \begin{circuitikz}[american]
+            \draw (0,0) to [sV, l=$220V$] ++(0,2) -- ++(1,0)
+            node[transformer core, circuitikz/inductors/coils=6,
+            anchor=A1](T){};
+            \draw (T.A2) -| (0,0);
+            \draw (T-L2.midtap) to[short, *-] (T.B1 |- T-L2.midtap);
+            \draw (T.B2) to[short, -o] ++(1.2,0);
+            \draw (T.B1) ++(0.6,-0.55) node[spdt, rotate=180](SW){} ;
+            \draw (T.B1) -| (SW.out 2);
+            \draw (T-L2.midtap) -| (SW.out 1);
+            \node [ocirc] at (SW.in){};
+            \draw (T.B2) ++(1.2,0) to[open, v_<=$12/24V$] (SW.in);
+          \end{circuitikz}
+          \caption{Esquema del transformador y el selector de punto.}
+        \end{figure}
 
 
       \section{Rectificacion}
         \subsection{Principio de funcionamiento}
-          La función del rectificador es convertir la tensión alterna en una continua pulsante, el circuito que cumple 
-          esa función se lo conoce como puente de diodos. Como el mismo es de onda completa y no de media onda, si la 
-          entrada es una onda senoidal de 50$\Hz$, a la salida obtenemos una señal pulsante con el doble de la 
-          frecuencia, en este caso, 100$\Hz$.\\ 
-          A continuacion un esquematico de el funcionamiento del puente de diodos en ambos semiciclos:
+          La salida de voltaje del transformador sigue siendo una onda sinusoidal con la misma frecuencia que la linea,
+          por lo que para poder usarla es necesario eliminar el semiciclo negativo. Para ello, podemos emplear un
+          conjunto de diodos configurados como rectificador de onda completa.
+
+          La función del rectificador de onda completa es convertir la tensión alterna en una pulsante, con solo
+          semiciclos positivos y sin pedrida de los semiciclos negativos, como si pasa en un rectificador de media
+          onda. La vemtaja del rectificador de onda completa es que permite aprovechar la totalidad de la corriente
+          alterna. El circuito que cumple esa función se lo conoce como puente de diodos. Un detalle a tener en cuenta,
+          es que debido a que el rectificador de onda completa convierte el semiciclo negativo en uno positivo, el
+          periodo en el cual la señal se repite disminuye, por lo tanto, si la entrada es una onda senoidal de 50$\Hz$,
+          a la salida obtenemos una señal pulsante con el doble de la frecuencia, en este caso, 100$\Hz$.
+          \begin{figure}[!h]
+            \centering
+            %circuitikz
+            \caption{Esquema del puente de diodos con sentido de circulacion en el semiciclo positivo y semiciclo
+            negativo.}
+          \end{figure}
+
+
         \subsection{Eleccion de diodos}
-          Primero necesitamos saber la corriente maxima que va a circular por el puente. La corriente maxima continua
-          que entrega el LM317 es $1.5\A$, pero, por cortos periodos de tiempo, puede entregar hasta $2.1\A$.\\
+          Es importante saber que el diodo tiene limites de operacion. En estos limites se dictan las capacidades
+          maximas de operacion del diodo, por ejemplo: Corriente en directa maxima, Voltaje de ruptura en directa,
+          Voltaje de ruptura en inversa, etc. Segun los requerimientos de la fuente y las condiciones de trabajo de los
+          diodos, podemos determinar cual diodo utilizar.
+
+          La corriente maxima continua que va a necesitar la fuente, esta determinada por la hoja de datos del LM317,
+          el elemento regulador que pone la primera limitacion a la salida de corriente. En la hoja de datos, se
+          especifica que la entrega maxima de corriente del LM317 es de $1.5\A$, pero, por cortos periodos de tiempo,
+          puede entregar hasta $2.1\A$.
+
           Teniendo en cuenta lo anterior mencionado, y sabiendo que por cada rama del puente de diodos pasa la mitad de
-          la corriente total, podemos determinar que como maximo, por cada diodo va a pasar $1.05\A$, superando el
+          la corriente total, podemos determinar que, como maximo, por cada diodo va a pasar $1.05\A$, superando el
           maximo de la serie 1N400X (1-7). Debido a esto, elegimos diodos de 3A de la serie 1N540X (1-8) ya que diodos
           de $2\A$ no se fabrican.
 
+          Un dato no menor es el de los voltajes maximos en directa y en inversa. Debido a que el potencial mas alto
+          que va a ver la fuente es el de la salida del transformador, podemos determinar el voltaje maximo en directa
+          e inversa que van a experimentar los diodos durante su ciclo de trabajo utilizando:
+          \begin{equation}
+            V_p = V_{EF} \cdot \sqrt{2}
+            \label{voltaje.pico}
+          \end{equation}
+
+          Utilizando (\ref{voltaje.pico}) y sabiendo que el transformador puede entregar como maximo $24VAC$, la
+          tension pico es:
+          \begin{equation*}
+            V_p = 24V \cdot \sqrt{2} = 33.94V
+          \end{equation*}
+
+          Segun la hoja de datos, el 1N5400 es un buen candidato. Incluso si quisesemos tener mas seguridad, se podria
+          usar el 1N5401, que tiene hasta $100\V$ de voltaje de polarizacion en inversa ($V_{RRM}$). A pesar de ello,
+          en el kit de la fuente vinieron 4 diodos 1N5408.
+
 
       \section{Filtrado}
-        Para alimentar circuitos de corriente continua no podemos usar la onda pulsante que sale del puente
-        rectificador, necesitamos "aplanarla", para esto se usan capacitores que filtran la señal.\\ 
-        La Formula utilizada para calcular la capcidad es:\\ 
+        Despues de que la entrada de alimentacion pasa por el rectificador de onda completa, la señal con la que se
+        trabaja es una senoidal pulsante de $100\Hz$. A pesar de que ya no tiene semiciclos negativos, el hecho de que
+        siga siendo una señal pulsada no es deseable. Para ello, se emplean una serie de filtros que permiten eliminar
+        el aspecto pulsante de la entrada de alimentacion y convertirla en una señal realmente continua. Para lograr
+        ese cambio en la señal se usan conjuntos capacitores que funcionan como almacenadores de energia durante el
+        flanco de subida de la señal pulsante, y durante el flanco de bajada funcionan como fuentes que compensan
+        la caida de la señal pulsante. Dependiendo del voltaje y la carga a la que se planea someter la fuente, se
+        puede calcular que capacitor es necesario para la fuente:
+        \begin{equation}
+            C = \frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
+        \end{equation}
+
+        Sabiendo que la corriente maxima que puede llegar a requerir la fuente es de $2\A$, la diferencia de voltaje
+        es aproximadamente $34\V$ y la frecuencia $100\Hz$:
         \begin{equation*}
-            C=\frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
+          C = \frac{2\A}{2 \cdot 100\Hz \cdot 34\V}
         \end{equation*}
+
 
   \chapter{Ensayos y mediciones}
     Desde la recepcion de los componentes hasata el armado final de la placa, se fueron realizando multiples pruebas
@@ -443,14 +522,16 @@
 
   \chapter{Conclusiones}
     En este trabajo pudimos comprender en profundidad el funcionamiento de cada una de las etapas que componen una fuente
-    de alimentación lineal regulada, desde la transformación y rectificación hasta el filtrado y la regulación final.\\ 
-   También analizamos la importancia de incorporar un regulador de tensión, observando cómo mejora la estabilidad de la
-   salida y comparando su comportamiento frente a una fuente sin regulación. Esto nos permitió visualizar de forma
-   práctica las ventajas que aporta en cuanto a protección y confiabilidad.\\ 
-   Sin embargo, también vimos que este tipo de fuentes tienen sus limitaciones: si se las exige demasiado, tienden a 
-   disipar gran parte de la energía en forma de calor, lo que afecta su eficiencia. Por lo tanto, son una buena solución
-   en aplicaciones de baja o media exigencia, pero no siempre resultan viables cuando se requiere alta potencia o eficiencia energética.
-    
+    de alimentación lineal regulada, desde la transformación y rectificación hasta el filtrado y la regulación final.
+
+    También analizamos la importancia de incorporar un regulador de tensión, observando cómo mejora la estabilidad de la
+    salida y comparando su comportamiento frente a una fuente sin regulación. Esto nos permitió visualizar de forma
+    práctica las ventajas que aporta en cuanto a protección y confiabilidad.
+
+    Sin embargo, también vimos que este tipo de fuentes tienen sus limitaciones: si se las exige demasiado, tienden a 
+    disipar gran parte de la energía en forma de calor, lo que afecta su eficiencia. Por lo tanto, son una buena solución
+    en aplicaciones de baja o media exigencia, pero no siempre resultan viables cuando se requiere alta potencia o eficiencia energética.
+
 \end{document}
 
 
