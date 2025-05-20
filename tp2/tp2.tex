@@ -18,7 +18,7 @@
   \setcounter{page}{1}
   \thispagestyle{plain}
 
-  \chapter{Introducción} 
+  \chapter{Introducción}
 
     En el marco de la asignatura \textit{Electrónica Aplicada I}, se llevó a cabo un trabajo práctico centrado en la
     construcción y análisis de una fuente de alimentación de tensión variable. Este tipo de fuente resulta fundamental
@@ -53,7 +53,7 @@
         El transformador cumple dos funciones principales:
         \begin{itemize}
           \item Proporciona aislamiento galvanico entre la red de 220 V y la fuente mediante acoplamiento magnetico.
-          \item Reduce la tension de 220 V a un valor determinado por la relacion entre el bobinado de entrada y el 
+          \item Reduce la tension de 220 V a un valor determinado por la relacion entre el bobinado de entrada y el
             boninado de salida, acorde a las necesidades de lo que se busca alimentar.
         \end{itemize}
 
@@ -159,19 +159,19 @@
               to [full diode, *-*, invert, l={\footnotesize D4}] ++(-2,-2) coordinate (bottom bridge)
               to [full diode, *-*, invert, l={\footnotesize D3}, f_<=i ] ++(-2,2) coordinate (left bridge)
               to [full diode, *-*, l={\footnotesize D1}] (0,0);
-        
+
               \draw (top bridge) to[short, -o, f_<={i},] ++(-3.5,0) coordinate(inA);
               \draw (bottom bridge) to[short, -o, f=i] ++(-3.5,0) coordinate(inB);
               \draw (right bridge) to[short] ++(1,0) coordinate(outA);
               \draw (left bridge)to[short] ++(-0.3,0) to[short] ++(0,-3) to[short, f_<=i] ++(5.3,0) coordinate(outB);
-        
+
               \draw (outA) to[R, v_=$v_L$, f=i] (outB);
-        
+
               \node at ($(inA)!0.5!(inB)$) []{$v_{in}$};
-        
+
               \node at ($(inA) +(-0.4,0)$) []{+};
               \node at ($(inB) +(-0.4,0)$) []{-};
-        
+
             \end{circuitikz}
             \caption{Semiciclo positivo}
           \end{minipage}
@@ -183,19 +183,19 @@
               to [full diode, *-*, invert, l={\footnotesize D4}, f<={i}] ++(-2,-2) coordinate (bottom bridge)
               to [full diode, *-*, invert, l={\footnotesize D3}] ++(-2,2) coordinate (left bridge)
               to [full diode, *-*, l={\footnotesize D1}, f>_={i}] (0,0);
-        
+
               \draw (top bridge) to[short, -o, f_=i] ++(-3.5,0) coordinate(inA);
               \draw (bottom bridge) to[short, -o, f<=i] ++(-3.5,0) coordinate(inB);
               \draw (right bridge) to[short] ++(1,0) coordinate(outA);
               \draw (left bridge)to[short] ++(-0.3,0) to[short] ++(0,-3) to[short, f_<=i] ++(5.3,0) coordinate(outB);
-        
+
               \draw (outA) to[R, v_=$v_L$, f = i] (outB);
-        
+
               \node at ($(inA)!0.5!(inB)$) []{$v_{in}$};
-        
+
               \node at ($(inA) +(-0.4,0)$) []{-};
               \node at ($(inB) +(-0.4,0)$) []{+};
-        
+
             \end{circuitikz}
             \caption{Semiciclo negativo}
           \end{minipage}
@@ -330,7 +330,7 @@
         \end{figure}
 
         Por lo que el valor mínimo que podemos obtener en esta fuente es \textbf{1.25\,V}.
-    
+
         \subsection{Protecciones}
           El regulador LM317 cuenta con diversas protecciones integradas que garantizan su funcionamiento seguro ante
           condiciones anómalas:
@@ -443,7 +443,7 @@
                 coordinates {
                   (0,17.65)(0.5,15.45) (0.75,14.82) (1.00,14.24) (1.25,13.64) (1.5,13.16)
                 };
-                
+
                 \addplot[
                   color=blue,
                   thick
@@ -464,7 +464,7 @@
         \end{figure}
 
         \subsubsection{Resistencia interna}
-        
+
         Para calcular la resistencia interna se considera:
 
         \begin{equation*}
@@ -481,7 +481,7 @@
         \end{equation*}
 
         \subsubsection{Factor de ripple}
-        
+
         Finalmente, el factor de ripple, que es un indicador de la efectividad del filtro se define como:
 
         \begin{equation*}
@@ -549,7 +549,7 @@
                 coordinates {
                   (0,36.75)(0.5,31.51) (0.75,30.37) (1.00,28.98) (1.25,27.76) (1.5,26.62)
                 };
-                
+
                 \addplot[
                   color=blue,
                   thick
@@ -734,7 +734,7 @@
     salida y comparando su comportamiento frente a una fuente sin regulación. Esto nos permitió visualizar de forma
     práctica las ventajas que aporta en cuanto a protección y confiabilidad.
 
-    Sin embargo, también vimos que este tipo de fuentes tienen sus limitaciones: si se las exige demasiado, tienden a 
+    Sin embargo, también vimos que este tipo de fuentes tienen sus limitaciones: si se las exige demasiado, tienden a
     disipar gran parte de la energía en forma de calor, lo que afecta su eficiencia. Por lo tanto, son una buena solución
     en aplicaciones de baja o media exigencia, pero no siempre resultan viables cuando se requiere alta potencia o eficiencia energética.
 
