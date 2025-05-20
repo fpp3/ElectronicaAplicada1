@@ -89,24 +89,119 @@
 
 
       \section{Rectificacion}
-        \subsection{Principio de funcionamiento}
-          La salida de voltaje del transformador sigue siendo una onda sinusoidal con la misma frecuencia que la linea,
-          por lo que para poder usarla es necesario eliminar el semiciclo negativo. Para ello, podemos emplear un
-          conjunto de diodos configurados como rectificador de onda completa.
+        La salida de voltaje del transformador sigue siendo una onda sinusoidal con la misma frecuencia que la linea,
+        por lo que para poder usarla es necesario eliminar el semiciclo negativo. Para ello, podemos emplear un
+        conjunto de diodos configurados como rectificador de onda completa.
 
-          La función del rectificador de onda completa es convertir la tensión alterna en una pulsante, con solo
-          semiciclos positivos y sin pedrida de los semiciclos negativos, como si pasa en un rectificador de media
-          onda. La vemtaja del rectificador de onda completa es que permite aprovechar la totalidad de la corriente
-          alterna. El circuito que cumple esa función se lo conoce como puente de diodos. Un detalle a tener en cuenta,
-          es que debido a que el rectificador de onda completa convierte el semiciclo negativo en uno positivo, el
-          periodo en el cual la señal se repite disminuye, por lo tanto, si la entrada es una onda senoidal de 50$\Hz$,
-          a la salida obtenemos una señal pulsante con el doble de la frecuencia, en este caso, 100$\Hz$.
-          \begin{figure}[!h]
+        La función del rectificador de onda completa es convertir la tensión alterna en una pulsante, con solo
+        semiciclos positivos y sin pedrida de los semiciclos negativos, como si pasa en un rectificador de media
+        onda.
+        \begin{figure}[!h]
+          \noindent
+          \centering
+          \begin{minipage}[t][5cm][c]{0.4\textwidth}
             \centering
-            %circuitikz
-            \caption{Esquema del puente de diodos con sentido de circulacion en el semiciclo positivo y semiciclo
-            negativo.}
-          \end{figure}
+            \begin{tikzpicture}
+              \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  ylabel={[V]},
+                  xticklabels={},
+                  yticklabels={},
+                  domain=0:730,
+                  samples=200,
+                  grid=both,
+                  width=7cm,
+                  height=6cm,
+                  ymin=-3, ymax=3,
+                  xmin=0, xmax=730,
+                ]
+                \addplot[blue, thick] {2*sin(x)};
+                \addlegendentry{$v_{in}$}
+              \end{axis}
+            \end{tikzpicture}
+          \end{minipage}
+          \begin{minipage}[t][5cm][c]{0.4\textwidth}
+            \centering
+            \begin{tikzpicture}
+              \begin{axis}[
+                  axis lines=middle,
+                  xlabel={$t$},
+                  xticklabels={},
+                  yticklabels={},
+                  ylabel={[V]},
+                  domain=0:730,
+                  samples=200,
+                  grid=both,
+                  width=7cm,
+                  height=6cm,
+                  ymin=-3, ymax=3,
+                  xmin=0, xmax=730,
+                ]
+                \addplot[red, thick] {abs(2*sin(x))};
+                \addlegendentry{$v_{out}$}
+              \end{axis}
+            \end{tikzpicture}
+          \end{minipage}
+          \caption{Señales de entrada y salida}
+        \end{figure}
+
+        La ventaja del rectificador de onda completa es que permite aprovechar la totalidad de la corriente
+        alterna. El circuito que cumple esa función se lo conoce como puente de diodos. Un detalle a tener en cuenta,
+        es que debido a que el rectificador de onda completa convierte el semiciclo negativo en uno positivo, el
+        periodo en el cual la señal se repite disminuye, por lo tanto, si la entrada es una onda senoidal de 50$\Hz$,
+        a la salida obtenemos una señal pulsante con el doble de la frecuencia, en este caso, 100$\Hz$.
+        \begin{figure}[H]
+          \noindent
+          \centering
+          \begin{minipage}[t][8cm][c]{0.4\textwidth}
+            \centering
+            \begin{circuitikz} [circuitikz/diodes/scale=0.7, american]
+              \draw (0,0) coordinate(top bridge) to [full diode, *-*, l={\footnotesize D2}, f={i}] ++(2,-2) coordinate(right bridge)
+              to [full diode, *-*, invert, l={\footnotesize D4}] ++(-2,-2) coordinate (bottom bridge)
+              to [full diode, *-*, invert, l={\footnotesize D3}, f_<=i ] ++(-2,2) coordinate (left bridge)
+              to [full diode, *-*, l={\footnotesize D1}] (0,0);
+        
+              \draw (top bridge) to[short, -o, f_<={i},] ++(-3.5,0) coordinate(inA);
+              \draw (bottom bridge) to[short, -o, f=i] ++(-3.5,0) coordinate(inB);
+              \draw (right bridge) to[short] ++(1,0) coordinate(outA);
+              \draw (left bridge)to[short] ++(-0.3,0) to[short] ++(0,-3) to[short, f_<=i] ++(5.3,0) coordinate(outB);
+        
+              \draw (outA) to[R, v_=$v_L$, f=i] (outB);
+        
+              \node at ($(inA)!0.5!(inB)$) []{$v_{in}$};
+        
+              \node at ($(inA) +(-0.4,0)$) []{+};
+              \node at ($(inB) +(-0.4,0)$) []{-};
+        
+            \end{circuitikz}
+            \caption{Semiciclo positivo}
+          \end{minipage}
+          \hspace{1cm}
+          \begin{minipage}[t][8cm][c]{0.4\textwidth}
+            \centering
+            \begin{circuitikz} [circuitikz/diodes/scale=0.7, american]
+              \draw (0,0) coordinate(top bridge) to [full diode, *-*, l={\footnotesize D2}] ++(2,-2) coordinate(right bridge)
+              to [full diode, *-*, invert, l={\footnotesize D4}, f<={i}] ++(-2,-2) coordinate (bottom bridge)
+              to [full diode, *-*, invert, l={\footnotesize D3}] ++(-2,2) coordinate (left bridge)
+              to [full diode, *-*, l={\footnotesize D1}, f>_={i}] (0,0);
+        
+              \draw (top bridge) to[short, -o, f_=i] ++(-3.5,0) coordinate(inA);
+              \draw (bottom bridge) to[short, -o, f<=i] ++(-3.5,0) coordinate(inB);
+              \draw (right bridge) to[short] ++(1,0) coordinate(outA);
+              \draw (left bridge)to[short] ++(-0.3,0) to[short] ++(0,-3) to[short, f_<=i] ++(5.3,0) coordinate(outB);
+        
+              \draw (outA) to[R, v_=$v_L$, f = i] (outB);
+        
+              \node at ($(inA)!0.5!(inB)$) []{$v_{in}$};
+        
+              \node at ($(inA) +(-0.4,0)$) []{-};
+              \node at ($(inB) +(-0.4,0)$) []{+};
+        
+            \end{circuitikz}
+            \caption{Semiciclo negativo}
+          \end{minipage}
+        \end{figure}
 
 
         \subsection{Eleccion de diodos}
