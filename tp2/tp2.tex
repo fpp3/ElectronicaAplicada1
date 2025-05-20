@@ -38,23 +38,23 @@
     valor académico, la fuente construida será utilizada como herramienta de alimentación en futuros trabajos
     prácticos, reafirmando así su utilidad práctica y formativa.
 
-  \chapter{Planeamiento e introduccion teorica}
-    Para la realizacion del trabajo practico, es necesario tener un conocimiento basico de los elementos, etapas y
-    procedimientos los cuales se ven involucrados. Entre ellos estan:
+  \chapter{Planeamiento e introducción teórica}
+    Para la realización del trabajo practico, es necesario tener un conocimiento básico de los elementos, etapas y
+    procedimientos los cuales se ven involucrados. Entre ellos están:
     \begin{itemize}
       \item Transformador.
-      \item Rectificacion.
+      \item Rectificación.
       \item Filtrado.
-      \item Regulacion.
+      \item Regulación.
       \item Otros.
     \end{itemize}
 
       \section{Transformador}
         El transformador cumple dos funciones principales:
         \begin{itemize}
-          \item Proporciona aislamiento galvanico entre la red de 220 V y la fuente mediante acoplamiento magnetico.
-          \item Reduce la tension de 220 V a un valor determinado por la relacion entre el bobinado de entrada y el
-            boninado de salida, acorde a las necesidades de lo que se busca alimentar.
+          \item Proporciona aislamiento galvánico entre la red de 220 V y la fuente mediante acoplamiento magnético.
+          \item Reduce la tensión de 220 V a un valor determinado por la relación entre el bobinado de entrada y el
+            bobinado de salida, acorde a las necesidades de lo que se busca alimentar.
         \end{itemize}
 
         Para este trabajo practico, se emplea un transformador de $12+12V$. Esto significa que el transformador tiene
@@ -86,13 +86,13 @@
         \end{figure}
 
 
-      \section{Rectificacion}
+      \section{Rectificación}
         La salida de voltaje del transformador sigue siendo una onda sinusoidal con la misma frecuencia que la linea,
-        por lo que para poder usarla es necesario eliminar el semiciclo negativo. Para ello, podemos emplear un
+        por lo que para poder usarla es necesario eliminar el hemiciclo negativo. Para ello, podemos emplear un
         conjunto de diodos configurados como rectificador de onda completa.
 
         La función del rectificador de onda completa es convertir la tensión alterna en una pulsante, con solo
-        semiciclos positivos y sin pedrida de los semiciclos negativos, como si pasa en un rectificador de media
+        semiciclos positivos y sin perdida de los semiciclos negativos, como si pasa en un rectificador de media
         onda.
         \begin{figure}[!h]
           \noindent
@@ -147,7 +147,7 @@
         La ventaja del rectificador de onda completa es que permite aprovechar la totalidad de la corriente
         alterna. El circuito que cumple esa función se lo conoce como puente de diodos. Un detalle a tener en cuenta,
         es que debido a que el rectificador de onda completa convierte el semiciclo negativo en uno positivo, el
-        periodo en el cual la señal se repite disminuye, por lo tanto, si la entrada es una onda senoidal de 50$\Hz$,
+        periodo en el cual la señal se repite disminuye, por lo tanto, si la entrada es una onda sinusoidal de 50$\Hz$,
         a la salida obtenemos una señal pulsante con el doble de la frecuencia, en este caso, 100$\Hz$.
         \begin{figure}[H]
           \noindent
@@ -202,69 +202,69 @@
         \end{figure}
 
 
-        \subsection{Eleccion de diodos}
-          Es importante saber que el diodo tiene limites de operacion. En estos limites se dictan las capacidades
-          maximas de operacion del diodo, por ejemplo: Corriente en directa maxima, Voltaje de ruptura en directa,
-          Voltaje de ruptura en inversa, etc. Segun los requerimientos de la fuente y las condiciones de trabajo de los
+        \subsection{Elección de diodos}
+          Es importante saber que el diodo tiene limites de operación. En estos limites se dictan las capacidades
+          máximas de operación del diodo, por ejemplo: Corriente en directa máxima, Voltaje de ruptura en directa,
+          Voltaje de ruptura en inversa, etc. Según los requerimientos de la fuente y las condiciones de trabajo de los
           diodos, podemos determinar cual diodo utilizar.
 
-          La corriente maxima continua que va a necesitar la fuente, esta determinada por la hoja de datos del LM317,
-          el elemento regulador que pone la primera limitacion a la salida de corriente. En la hoja de datos, se
-          especifica que la entrega maxima de corriente del LM317 es de $1.5\A$, pero, por cortos periodos de tiempo,
+          La corriente máxima continua que va a necesitar la fuente, esta determinada por la hoja de datos del LM317,
+          el elemento regulador que pone la primera limitación a la salida de corriente. En la hoja de datos, se
+          especifica que la entrega máxima de corriente del LM317 es de $1.5\A$, pero, por cortos periodos de tiempo,
           puede entregar hasta $2.1\A$.
 
           Teniendo en cuenta lo anterior mencionado, y sabiendo que por cada rama del puente de diodos pasa la mitad de
-          la corriente total, podemos determinar que, como maximo, por cada diodo va a pasar $1.05\A$, superando el
-          maximo de la serie 1N400X (1-7). Debido a esto, elegimos diodos de 3A de la serie 1N540X (1-8) ya que diodos
+          la corriente total, podemos determinar que, como máximo, por cada diodo va a pasar $1.05\A$, superando el
+          máximo de la serie 1N400X (1-7). Debido a esto, elegimos diodos de 3A de la serie 1N540X (1-8) ya que diodos
           de $2\A$ no se fabrican.
 
-          Un dato no menor es el de los voltajes maximos en directa y en inversa. Debido a que el potencial mas alto
-          que va a ver la fuente es el de la salida del transformador, podemos determinar el voltaje maximo en directa
+          Un dato no menor es el de los voltajes máximos en directa y en inversa. Debido a que el potencial mas alto
+          que va a ver la fuente es el de la salida del transformador, podemos determinar el voltaje máximo en directa
           e inversa que van a experimentar los diodos durante su ciclo de trabajo utilizando:
           \begin{equation}
             V_p = V_{EF} \cdot \sqrt{2}
             \label{voltaje.pico}
           \end{equation}
 
-          Utilizando (\ref{voltaje.pico}) y sabiendo que el transformador puede entregar como maximo $24VAC$, la
-          tension pico es:
+          Utilizando (\ref{voltaje.pico}) y sabiendo que el transformador puede entregar como máximo $24VAC$, la
+          tensión pico es:
           \begin{equation*}
             V_p = 24V \cdot \sqrt{2} = 33.94V
           \end{equation*}
 
-          Segun la hoja de datos, el 1N5400 es un buen candidato. Incluso si quisesemos tener mas seguridad, se podria
-          usar el 1N5401, que tiene hasta $100\V$ de voltaje de polarizacion en inversa ($V_{RRM}$). A pesar de ello,
+          Según la hoja de datos, el 1N5400 es un buen candidato. Incluso si quisesemos tener mas seguridad, se podría
+          usar el 1N5401, que tiene hasta $100\V$ de voltaje de polarización en inversa ($V_{RRM}$). A pesar de ello,
           en el kit de la fuente vinieron 4 diodos 1N5408.
 
 
       \section{Filtrado}
-        Despues de que la entrada de alimentacion pasa por el rectificador de onda completa, la señal con la que se
-        trabaja es una senoidal pulsante de $100\Hz$. A pesar de que ya no tiene semiciclos negativos, el hecho de que
+        Después de que la entrada de alimentación pasa por el rectificador de onda completa, la señal con la que se
+        trabaja es una sinusoidal pulsante de $100\Hz$. A pesar de que ya no tiene semiciclos negativos, el hecho de que
         siga siendo una señal pulsada no es deseable. Para ello, se emplean una serie de filtros que permiten eliminar
-        el aspecto pulsante de la entrada de alimentacion y convertirla en una señal realmente continua. Para lograr
-        ese cambio en la señal se usan conjuntos capacitores que funcionan como almacenadores de energia durante el
+        el aspecto pulsante de la entrada de alimentación y convertirla en una señal realmente continua. Para lograr
+        ese cambio en la señal se usan conjuntos capacitores que funcionan como almacenadores de energía durante el
         flanco de subida de la señal pulsante, y durante el flanco de bajada funcionan como fuentes que compensan
-        la caida de la señal pulsante. Dependiendo del voltaje y la carga a la que se planea someter la fuente, se
+        la caída de la señal pulsante. Dependiendo del voltaje y la carga a la que se planea someter la fuente, se
         puede calcular que capacitor es necesario para la fuente:
         \begin{equation}
             C = \frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
         \end{equation}
 
-        Sabiendo que la corriente maxima que puede llegar a requerir la fuente es de $2\A$, la diferencia de voltaje
+        Sabiendo que la corriente máxima que puede llegar a requerir la fuente es de $2\A$, la diferencia de voltaje
         es aproximadamente $34\V$ y la frecuencia $100\Hz$:
         \begin{equation*}
           C = \frac{2\A}{2 \cdot 100\Hz \cdot 34\V}
         \end{equation*}
 
       \section{Regulación}
-        Aunque ya tengamos nuestra señal rectificada y filtrada, es necesario incluir en nuestra fuente algun
+        Aunque ya tengamos nuestra señal rectificada y filtrada, es necesario incluir en nuestra fuente algún
         dispositivo que se encargue de que, con las fluctuaciones de corriente debido a las distintas cargas, hacer que
-        la tension permanezca constante. Para ello se utiliza un regulador lineal, en este caso, ajustable como es el
-        LM317. El regulador, ademas de mantener una salida de tension constante, reduce el ripple de la señal en el
+        la tensión permanezca constante. Para ello se utiliza un regulador lineal, en este caso, ajustable como es el
+        LM317. El regulador, ademas de mantener una salida de tensión constante, reduce el ripple de la señal en el
         orden de unas 1000 veces.
 
-        \subsection{Especificaciones y calculos}
-          El LM317, se comercializa en diferentes formatos, con los cuales varian el factor de forma y la potencia
+        \subsection{Especificaciones y cálculos}
+          El LM317, se comercializa en diferentes formatos, con los cuales varían el factor de forma y la potencia
           disipada. Los mas comunes son el TO-220 y el TO-3, cuyos encapsulados disipan $15\W$ y $20\W$ respectivamente.
           \begin{figure}[H]
             \centering
@@ -295,13 +295,13 @@
             \vspace{5mm}
           \end{center}
 
-        En cuanto a los limites de operacion:
+        En cuanto a los limites de operación:
 
         \begin{center}
           $I_{MAX}=1.5\A \qquad V_{Diff-MAX}=V_{in}-V_{out}=40\V \qquad T_{juntura-max}=125\Celsius$
         \end{center}
 
-        Ahora para el calculo de la tension de salida:
+        Ahora para el calculo de la tensión de salida:
 
         \begin{align*}
           V_{OUT} &= I_1 \times R_1 + \left(I_1 + I_{ADJ}\right) \times R_2
@@ -352,18 +352,18 @@
 
       \section{Otros}
         \subsection{Fuente auxiliar}
-          Debido a la limitacion de voltaje minimo de salida impuesto por el LM317 de 1.25\,V, si se quisiese poder
-          regular el voltaje de 0 a 30\,V, es necesario suplementar el potencial minimo de forma negativa al pin de
-          regulacion del LM317. Para ello, se puede emplear una segunda fuente, aparte de la fuente principal, que
-          cumple el proposito de proveerle al LM317 ese potencial extra de -1.25\,V. Esta fuente no tiene que tener nada
+          Debido a la limitación de voltaje mínimo de salida impuesto por el LM317 de 1.25\,V, si se quisiese poder
+          regular el voltaje de 0 a 30\,V, es necesario suplementar el potencial mínimo de forma negativa al pin de
+          regulación del LM317. Para ello, se puede emplear una segunda fuente, aparte de la fuente principal, que
+          cumple el propósito de proveerle al LM317 ese potencial extra de -1.25\,V. Esta fuente no tiene que tener nada
           de especial. Lo importante es que su terminal positivo este conectado al punto donde estaba la masa de la
           resistencia ajustable, y que esa masa se conecte al terminal negativo de la fuente auxiliar. De esta forma
           el pin de ajuste del LM317 tiene ese potencial negativo extra necesario para poder regular hasta 0\,V.
 
         \subsection{Ensamblaje}
-          La placa y los componentes fueron adquiridos gracias al profesor titular de la catedra, quien armó el kit
+          La placa y los componentes fueron adquiridos gracias al profesor titular de la cátedra, quien armó el kit
           con todos los componentes indispensables para el desarrollo del trabajo practico. Componentes como el
-          transformador, gabinete, interruptores, potenciometro, discipador y etc. pueden ser adquiridos para poder
+          transformador, gabinete, interruptores, potenciómetro, disipador y etc. pueden ser adquiridos para poder
           tener una fuente 100\% completa al finalizar el trabajo practico. Nosotros optamos por no comprar esos
           componentes.
           \begin{figure}[!h]
@@ -373,11 +373,11 @@
           \end{figure}
 
   \chapter{Ensayos y mediciones}
-    Desde la recepcion de los componentes hasata el armado final de la placa, se fueron realizando multiples pruebas
-    de las diferentes etapas que componen a la fuente. Especificamente, en este trabajo practico, se realizaron pruebas
-    a la fuente no regulada, para obtener mediciones base del comportamiento de una fuente sin regulacion activa, y
-    tambien se le realizaron pruebas a la fuente regulada. Las pruebas de ambas fuentes son similares, y cumplmen el
-    proposito de traer a diferencia las ventajas y desventajas de ambas fuentes por separado.
+    Desde la recepción de los componentes hasta el armado final de la placa, se fueron realizando múltiples pruebas
+    de las diferentes etapas que componen a la fuente. Específicamente, en este trabajo practico, se realizaron pruebas
+    a la fuente no regulada, para obtener mediciones base del comportamiento de una fuente sin regulación activa, y
+    también se le realizaron pruebas a la fuente regulada. Las pruebas de ambas fuentes son similares, y cumplen el
+    propósito de traer a diferencia las ventajas y desventajas de ambas fuentes por separado.
 
     \section{Fuente no regulada}
       \begin{wrapfigure}{r}{0.4\textwidth}
@@ -391,12 +391,12 @@
 
       El transformador que se utiliza para bajar la tensión alterna de 220V a 12+12V, consta de dos bobinados que
       proporcionan 12V cada uno. Por lo tanto el ensayo de la placa se realizó en dos apartados; una en el punto bajo
-      de la fuente utilizando un solo bobinado del transformador (12v) y, otro en el punto alto de la fuente utilizando
-      los dos bobinados (24v).
+      de la fuente utilizando un solo bobinado del transformador (12\,V) y, otro en el punto alto de la fuente utilizando
+      los dos bobinados (24\,V).
 
       \subsection{Mediciones y cálculos: punto bajo}
         Para este caso se usó solamente un bobinado del transformador. Se midió la tensión de salida de la fuente no
-        regulada en vacío, y luego se conectó a la misma una carga variable (reostato) para analizar qué tensión
+        regulada en vacío, y luego se conectó a la misma una carga variable (reóstato) para analizar qué tensión
         otorga la fuente según la corriente que pasa por la carga, hasta un máximo de 1.5A. Con estos datos se puede
         calcular la resistencia interna del transformador más la de los diodos, el factor de ripple, etc.
 
@@ -488,15 +488,15 @@
             FR = \frac{V_{eficaz-ripple}}{V_{carga}} \times 100\%
         \end{equation*}
 
-        El $V_{eficaz-ripple}$ es la tensión medida con el multimétro establecido en escala de tensión alterna.
-        Para ello, nos aseguramos de que el multimétro mida valor verdadero eficaz (true RMS) para realizar una
+        El $V_{eficaz-ripple}$ es la tensión medida con el multimetro establecido en escala de tensión alterna.
+        Para ello, nos aseguramos de que el multimetro mida valor verdadero eficaz (true RMS) para realizar una
         medición más acertada. Considerando entonces el valor de $V_{eficaz-ripple}$ medido:
 
         \begin{equation*}
             FR = \frac{0.873V}{13.16V} \times 100\% = 6.6337\%
         \end{equation*}
 
-        Además del uso del multimétro, nos pareció interesante observar la forma de onda de la tensión de salida de la
+        Además del uso del multimetro, nos pareció interesante observar la forma de onda de la tensión de salida de la
         fuente con el osciloscopio. De esta manera también pudimos observar el ripple calculado.
         \begin{figure}[!h]
           \centering
@@ -604,7 +604,7 @@
 
       Las pruebas de la fuente regulada se hacen ya con toda la placa poblada. Para estas pruebas se utilizo el
       transformador en punto alto y ademas se conecto la fuente que genera el potencial negativo. Esta segunda fuente
-      cumple el proposito de agregarle un extra de potencial negativo a la referencia de ajuste del LM317. Como
+      cumple el propósito de agregarle un extra de potencial negativo a la referencia de ajuste del LM317. Como
       resultado, el rango efectivo de ajuste del LM317 es ahora de 0 a 30V, mientras que sin la fuente negativa,
       el rango es de 1.25 a 30V.
 
@@ -614,7 +614,7 @@
 
       Con toda la placa armada, esta se colocó en el banco de pruebas provisto por la facultad para realizar las
       mediciones. Es importante destacar que, debido a la potencia que discipa el LM317, es estrictamente necesario
-      colocar el mismo en un discipador con pasta termica o algun otro medio de transferencia termica. El motivo de
+      colocar el mismo en un disipador con pasta térmica o algún otro medio de transferencia térmica. El motivo de
       esto se va a explicar mas adelante.
 
       \begin{figure}[!h]
@@ -623,8 +623,8 @@
         \caption{Placa montada en el banco de pruebas.}
       \end{figure}
 
-      \subsection{Medicion de Regulacion de Voltaje}
-        Nuevamente, para las mediciones de la regulacion de voltaje, se toma una medicion del potencial en la salida de
+      \subsection{Medición de Regulación de Voltaje}
+        Nuevamente, para las mediciones de la regulación de voltaje, se toma una medición del potencial en la salida de
         la fuente sin carga y con carga plena:
         \begin{figure}[!h]
           \centering
@@ -643,10 +643,10 @@
           \end{minipage}
         \end{figure}
 
-      \subsection{Medicion de Ripple}
-        Para la medicion de ripple, utilizamos un osciloscopio debido a que el LM317 tiene una atencuacion de al
+      \subsection{Medición de Ripple}
+        Para la medición de ripple, utilizamos un osciloscopio debido a que el LM317 tiene una atenuación de al
         rededor de 1000 veces el ripple de entrada y ademas de que tiene una muy alta frecuencia. Esto imposibilita el
-        uso de un multimetro True-RMS y ademas implica que la medicion del ripple puede estar errada. Con el
+        uso de un multimetro True-RMS y ademas implica que la medición del ripple puede estar errada. Con el
         osciloscopio obtuvimos lo siguiente:
         \begin{figure}[H]
           \centering
@@ -672,33 +672,33 @@
           \end{minipage}
         \end{figure}
 
-      \subsection{Prueba termica}
+      \subsection{Prueba térmica}
         \begin{wrapfigure}{r}{0.4\textwidth}
           \centering
           \includegraphics[width=.4\textwidth]{pictures/reg_discipador.jpeg}
-          \caption{Solucion de discipacion del banco de pruebas.}
+          \caption{Solución de disipación del banco de pruebas.}
         \end{wrapfigure}
-        El motivo de esta prueba es comprobar que la solucion de discipacion termica es adecuada para la aplicacion y
-        las condiciones de trabajo del LM317. Dado que utilizamos el empaquetado TO-220, la potencia maxima que puede
-        discipar el LM317 es de 15W. Ademas, en la hoja de datos se indica que la temperatura maxima de la union
-        (\textit{Maximum Junction Tempeure}) es de 125°C. Si la solucion de discipacion termica que empleamos no
-        es capaz de mantener utemperatura de juntura igual o menor a 125°C, con el uso, la fuente va a reducir la
+        El motivo de esta prueba es comprobar que la solución de disipación térmica es adecuada para la aplicación y
+        las condiciones de trabajo del LM317. Dado que utilizamos el empaquetado TO-220, la potencia máxima que puede
+        disipar el LM317 es de 15W. Ademas, en la hoja de datos se indica que la temperatura máxima de la unión
+        (\textit{Maximum Junction Tempeure}) es de 125°C. Si la solución de disipación térmica que empleamos no
+        es capaz de mantener temperatura de juntura igual o menor a 125°C, con el uso, la fuente va a reducir la
         potencia de salida para preservar su propia integridad y bajar la temperatura de juntura.
 
         La prueba consiste en hacer que el LM317 este en las condiciones mas extremas de trabajo, siendo estas la
-        discipacion de 15W constantemente. Sabiendo que la corriente maxima del LM317 es de 1.5A, se puede determinar
-        que la caida de tension tiene que ser 10V para que caigan 15W.
+        disipación de 15W constantemente. Sabiendo que la corriente máxima del LM317 es de 1.5A, se puede determinar
+        que la caída de tensión tiene que ser 10V para que caigan 15W.
 
         Debido a que no es posible medir la temperatura de la juntura del silicio con el sustrato, el fabricante
-        provee una relacion de la temperatura en la carcasa con la temperatura de juntura. Por eso, se mide la
+        provee una relación de la temperatura en la carcasa con la temperatura de juntura. Por eso, se mide la
         temperatura de carcasa ($T_C$) y con la formula de temperatura de juntura podemos saber si estamos
         debajo del limite.
 
         \begin{figure}[!h]
           \centering
           \includegraphics[width=0.8\textwidth]{pictures/reg_prueb-term.jpeg}
-          \caption{Prueba termica. A la izquierda esta la temperatura de carcasa, abajo a la derecha la corriente y
-                   arriba a la derecha la caida de tension en el LM317}
+          \caption{Prueba térmica. A la izquierda esta la temperatura de carcasa, abajo a la derecha la corriente y
+                   arriba a la derecha la caída de tensión en el LM317}
         \end{figure}
 
         Por lo tanto:
@@ -723,8 +723,8 @@
 
         A pesar de que la temperatura de juntura calculada esta por encima de los 125°C, podemos considerar como que
         el regulador va a compensar una pequeña cantidad de la potencia de salida para regular su temperatura de
-        juntura. Ademas, segun las mediciones esta excedido en potencia, por lo que puede ser que la temperatura de
-        juntura real sea menor. Por lo tanto, la solucion de discipacion de temperatura es la adecuada.
+        juntura. Ademas, según las mediciones esta excedido en potencia, por lo que puede ser que la temperatura de
+        juntura real sea menor. Por lo tanto, la solución de disipación de temperatura es la adecuada.
 
   \chapter{Conclusiones}
     En este trabajo pudimos comprender en profundidad el funcionamiento de cada una de las etapas que componen una fuente
