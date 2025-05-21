@@ -245,19 +245,20 @@
         ese cambio en la señal se usan conjuntos capacitores que funcionan como almacenadores de energía durante el
         flanco de subida de la señal pulsante, y durante el flanco de bajada funcionan como fuentes que compensan
         la caída de la señal pulsante. Dependiendo del voltaje, la carga a la que se planea someter la fuente, y la
-        amplitud del ripple maxima, se puede calcular que capacitor es necesario para la fuente:
+        amplitud del ripple máxima, se puede calcular que capacitor es necesario para la fuente:
         \begin{equation}
             C = \frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
+            \label{capa.filtrado}
         \end{equation}
 
-        Es importante destacar que la eleccion del valor del capacitor depende de dos condiciones: Corriente de carga
+        Es importante destacar que la elección del valor del capacitor depende de dos condiciones: Corriente de carga
         y rango tolerable de ripple. Si se elige un capacitor muy grande, es muy posible que a cualquier carga, el
-        ripple sea minimo, pero esto implicaria que durante el ciclo de carga del capacitor, este exigiria una cantidad
+        ripple sea mínimo, pero esto implicaría que durante el ciclo de carga del capacitor, este exigiría una cantidad
         considerable de corriente, la cual puede llegar a exigir de mas a elementos como los diodos del rectificador de
         onda completa, o incluso el transformador. Esta exigencia extra posiblemente genere aumentos de temperatura
-        considerables sobre esos elementos, deteriorandolos mas rapidamente. Por otro lado, a pesar de que el ripple
-        es un fenomeno no deseable, la mayoria de los elementos tienen cierto rango de tolerancia a ese ripple. En caso
-        de que no sea asi, se debe considerar agregar otro elemento que permita aplanar el ripple para que la salida de
+        considerables sobre esos elementos, deteriorándolos mas rápidamente. Por otro lado, a pesar de que el ripple
+        es un fenómeno no deseable, la mayoría de los elementos tienen cierto rango de tolerancia a ese ripple. En caso
+        de que no sea así, se debe considerar agregar otro elemento que permita aplanar el ripple para que la salida de
         la fuente sea mas continua.
 
       \section{Regulación}
@@ -529,11 +530,20 @@
 
         Además del uso del multimetro, nos pareció interesante observar la forma de onda de la tensión de salida de la
         fuente con el osciloscopio. De esta manera también pudimos observar el ripple calculado.
-        \begin{figure}[!h]
+        \begin{figure}[H]
           \centering
           \includegraphics[width=0.8\textwidth]{pictures/ripple_fuente-nreg.jpeg}
-          \caption{Tensión de salida y observación del ripple de la fuente no regulada.}
+          \caption{Tensión de salida y observación del ripple de la fuente no regulada. 0.5V/div}
         \end{figure}
+
+        Se puede también corroborar que el valor de ripple medido y observado es el correcto, utilizando la ecuación
+        (\ref{capa.filtrado}), despejando para el $\Delta V$ que es el recorrido del ripple:
+        \begin{align*}
+          C &= \frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}\\[6pt]
+          \varDelta V &= \frac{I_{L}}{2 \cdot f_{salida} \cdot C}\\[6pt]
+          \varDelta V &= \frac{1.5A}{2 \cdot 100Hz \cdot 3300\mu F}\\[6pt]
+          \varDelta V &= 2.27V
+        \end{align*}
 
         \subsection{Mediciones y cálculos: punto alto}
             Se procede de la misma manera que en el punto bajo, pero esta vez utilizando los dos bobinados del
