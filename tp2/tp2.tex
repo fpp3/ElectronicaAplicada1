@@ -244,17 +244,21 @@
         el aspecto pulsante de la entrada de alimentación y convertirla en una señal realmente continua. Para lograr
         ese cambio en la señal se usan conjuntos capacitores que funcionan como almacenadores de energía durante el
         flanco de subida de la señal pulsante, y durante el flanco de bajada funcionan como fuentes que compensan
-        la caída de la señal pulsante. Dependiendo del voltaje y la carga a la que se planea someter la fuente, se
-        puede calcular que capacitor es necesario para la fuente:
+        la caída de la señal pulsante. Dependiendo del voltaje, la carga a la que se planea someter la fuente, y la
+        amplitud del ripple maxima, se puede calcular que capacitor es necesario para la fuente:
         \begin{equation}
             C = \frac{I_{L}}{2 \cdot f_{salida} \cdot \varDelta V}
         \end{equation}
 
-        Sabiendo que la corriente máxima que puede llegar a requerir la fuente es de $2\A$, la diferencia de voltaje
-        es aproximadamente $34\V$ y la frecuencia $100\Hz$:
-        \begin{equation*}
-          C = \frac{2\A}{2 \cdot 100\Hz \cdot 34\V}
-        \end{equation*}
+        Es importante destacar que la eleccion del valor del capacitor depende de dos condiciones: Corriente de carga
+        y rango tolerable de ripple. Si se elige un capacitor muy grande, es muy posible que a cualquier carga, el
+        ripple sea minimo, pero esto implicaria que durante el ciclo de carga del capacitor, este exigiria una cantidad
+        considerable de corriente, la cual puede llegar a exigir de mas a elementos como los diodos del rectificador de
+        onda completa, o incluso el transformador. Esta exigencia extra posiblemente genere aumentos de temperatura
+        considerables sobre esos elementos, deteriorandolos mas rapidamente. Por otro lado, a pesar de que el ripple
+        es un fenomeno no deseable, la mayoria de los elementos tienen cierto rango de tolerancia a ese ripple. En caso
+        de que no sea asi, se debe considerar agregar otro elemento que permita aplanar el ripple para que la salida de
+        la fuente sea mas continua.
 
       \section{Regulación}
         Aunque ya tengamos nuestra señal rectificada y filtrada, es necesario incluir en nuestra fuente algún
@@ -268,13 +272,13 @@
           disipada. Los mas comunes son el TO-220 y el TO-3, cuyos encapsulados disipan $15\W$ y $20\W$ respectivamente.
           \begin{figure}[H]
             \centering
-            \begin{minipage}[b]{0.3\textwidth}
+            \begin{minipage}[b]{0.15\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pictures/to220.jpg}
                 \caption*{TO-220}
             \end{minipage}
             \hspace{1cm}
-            \begin{minipage}[b]{0.3\textwidth}
+            \begin{minipage}[b]{0.15\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{pictures/to3.jpg}
                 \caption*{TO-3}
@@ -282,12 +286,38 @@
           \end{figure}
           En nuestro caso, empleamos el formato TO-220.
           \begin{center}
-            \begin{minipage}{0.45\textwidth}
+            \begin{minipage}{0.3\textwidth}
               \centering
-              \includegraphics[width=\linewidth]{pictures/Salida_lm317.png}
+              \begin{circuitikz}
+                \ctikzset{resistors/scale=0.7}
+                \draw  node[rectangle,draw, minimum width=3cm,minimum height=2cm, label={[below]north:LM317}, label={[right]west:IN},
+                  label={[above]south:ADJ}, label={[left]east:OUT}](LM317){}  ;
+
+                \draw (LM317.west) to[short, -o] ++(-1,0) coordinate(inA);
+                \draw (LM317.east) to[short, -*] ++(1.5,0) to[R=$R_1$, f>^=$I_{R_1}$] ++(0,-2.5) coordinate(nodo);
+                \draw (LM317.south) to[short] ++(0,-1.5) to[short, -*, f=$I_{adj}$] (nodo) to[vR=$R_2$] ++(0,-1.5) coordinate(R2s) to[short, *-o] ++(-5.5,0) coordinate (inB);
+                \draw (LM317.east) to[short, -o] ++(3.5,0) coordinate (outA);
+                \draw (R2s) to[short, -o] ++(2,0) coordinate (outB);
+                \draw (R2s) node[ground]{} ;
+
+                \coordinate (p1) at ($(LM317.east)+(1,-0.2)$);
+                \coordinate (p2) at ($(nodo)+(-0.5,0.2)$);
+                \coordinate (p3) at ($(p1) !0.5! (p2)$);
+                \draw [stealth-stealth] (p1) -- (p2);
+                \node at ($(p3) +(-.5,0)$) []{$V_{Ref}$};
+
+                \node at ($(inA) +(-0.4,0)$) []{+};
+                \node at ($(inB) +(-0.4,0)$) []{-};
+                \node at ($(outA) +(0.4,0)$) []{+};
+                \node at ($(outB) +(0.4,0)$) []{-};
+
+                \node at ($(outA)!0.5!(outB)$) []{$V_{out}$};
+                \node at ($(inA)!0.5!(inB)$) []{$v_{in}$};
+
+              \end{circuitikz}
             \end{minipage}
             \hfill
-            \begin{minipage}{0.5\textwidth}
+            \begin{minipage}{0.4\textwidth}
               Por otro lado, el regulador cuenta con 3 terminales: INPUT, OUTPUT y ADJ. Entre OUTPUT y ADJ se establece
               una tensión constante $V_{REF} = 1.25\,\mathrm{V}$. Además, $I_{ADJ} = 50\,\mu\mathrm{A}$ \quad y \quad
               $I_1 = I_{REF} = \dfrac{V_{REF}}{R_1}$.
@@ -382,6 +412,7 @@
     \section{Fuente no regulada}
       \begin{wrapfigure}{r}{0.4\textwidth}
         \centering
+        \vspace{-5mm}
         \includegraphics[width=.4\textwidth]{pictures/no-reg_pcb.jpg}
         \caption{Fuente no regulada en la PCB.}
       \end{wrapfigure}
