@@ -1,0 +1,159 @@
+(footprint "Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 2.5 2.2 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "21f92822-e5d9-4a6d-9ebe-5665fcb0f5c5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(at 2.6 -2.3 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "52e8bde1-ab9e-45a7-ad1b-3fbeb428c7a7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "05413bc7-7a02-46f7-ac4d-ab181f74d6a2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8cdefb69-ea5b-4307-81bf-f174412bb134")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start 0.7 0)
+		(end 2.1 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "babb8448-52f3-4909-9de5-6d68a3e7503b")
+	)
+	(fp_line
+		(start 2.1 -1.1)
+		(end 2.1 1.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "62ab91b4-d79c-491d-8032-d74a73150bd5")
+	)
+	(fp_line
+		(start 2.9 1.1)
+		(end 2.9 -1.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ba4ccde1-6d7c-4080-b76b-15b3ce80005f")
+	)
+	(fp_line
+		(start 4.3 0)
+		(end 2.9 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8de053d7-4b49-487d-b551-092df49cca06")
+	)
+	(fp_rect
+		(start -1.05 -1.5)
+		(end 6.05 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5fe8278f-9ce6-4e3d-8820-f92efef061c8")
+	)
+	(fp_rect
+		(start 0 -1.25)
+		(end 5 1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "ae664b21-6f5b-44b5-acb1-9f47d2bcdbc1")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 2.5 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e6278c7d-5cf7-4e0f-8513-09d679a32ed6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0 180)
+		(size 3 3)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ab9ca34f-5ae5-4747-8cf6-27c6806f295e")
+	)
+	(pad "2" thru_hole circle
+		(at 5 0 180)
+		(size 3 3)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6a89484e-50de-489d-b7d8-2e575ce0f44c")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Disc_D5.0mm_W2.5mm_P5.00mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

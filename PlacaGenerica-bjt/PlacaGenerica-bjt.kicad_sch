@@ -1989,7 +1989,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 134.112 69.85 90)
 			(effects
 				(font
@@ -2057,7 +2057,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 116.84 87.9348 0)
 			(effects
 				(font
@@ -2127,7 +2127,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 198.882 104.14 90)
 			(effects
 				(font
@@ -2265,7 +2265,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 126.492 104.14 90)
 			(effects
 				(font
@@ -2335,7 +2335,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 151.892 104.14 90)
 			(effects
 				(font
@@ -2537,7 +2537,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 159.512 109.22 90)
 			(effects
 				(font
@@ -2605,7 +2605,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 181.61 81.5848 0)
 			(effects
 				(font
@@ -2675,7 +2675,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 172.4152 113.03 0)
 			(effects
 				(font
@@ -2879,7 +2879,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 198.882 114.3 90)
 			(effects
 				(font
@@ -2947,7 +2947,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 181.61 94.2848 0)
 			(effects
 				(font
@@ -3017,7 +3017,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 181.102 104.14 90)
 			(effects
 				(font
@@ -3087,7 +3087,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 126.492 74.93 90)
 			(effects
 				(font
@@ -3157,7 +3157,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 206.502 109.22 90)
 			(effects
 				(font
@@ -3293,7 +3293,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 188.722 109.22 90)
 			(effects
 				(font
@@ -3363,7 +3363,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 134.112 109.22 90)
 			(effects
 				(font
@@ -3433,7 +3433,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Wide"
+		(property "Footprint" "PrettyFootprints:Pretty-TO-92_Wide"
 			(at 218.44 88.9 0)
 			(effects
 				(font
@@ -3533,7 +3533,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 151.892 114.3 90)
 			(effects
 				(font
@@ -3603,7 +3603,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 159.512 69.85 90)
 			(effects
 				(font
@@ -3673,7 +3673,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 145.7452 104.14 0)
 			(effects
 				(font
@@ -3809,7 +3809,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 126.492 64.77 90)
 			(effects
 				(font
@@ -3879,7 +3879,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
+		(property "Footprint" "PrettyFootprints:Pretty-C_Disc_D5.0mm_W2.5mm_P5.00mm"
 			(at 121.6152 113.03 0)
 			(effects
 				(font
@@ -3949,7 +3949,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 151.892 64.77 90)
 			(effects
 				(font
@@ -4019,7 +4019,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 181.102 114.3 90)
 			(effects
 				(font
@@ -4089,7 +4089,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 126.492 114.3 90)
 			(effects
 				(font
@@ -4293,7 +4293,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "PrettyFootprints:Pretty-R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 151.892 74.93 90)
 			(effects
 				(font
