@@ -13,37 +13,47 @@
 
 \begin{document}
   \maketitle
-
   \tableofcontents
   \setcounter{page}{1}
   \thispagestyle{plain}
 
+\chapter{Introducción}
+
 \chapter{Diseño para Máxima Excursión Simétrica}
-  \begin{tikzpicture}
-	% Paths, nodes and wires:
-	\node[npn] at (7, 5.98){};
-	\draw (6.16, 5.98) |- (4, 6);
-	\draw (4, 6) to[american resistor, l={$R_1$}, label distance=0.02cm] (4, 9);
-	\draw (4, 3) to[american resistor, l={$R_2$}, label distance=0.02cm] (4, 6);
-	\draw (7, 6.75) to[american resistor, l={$R_{C}$}, label distance=0.02cm] (7, 9);
-	\draw (7, 3) to[american resistor, l={$R_{E}$}, label distance=0.02cm] (7, 5.25);
-	\draw (0.5, 3) to[sinusoidal voltage source, l={$V_i$}, label distance=0.02cm] (0.5, 6);
-	\draw (4, 6) to[capacitor, l={$C1$}, label distance=0.02cm] (2.25, 6);
-	\draw (2.25, 6) |- (0.5, 6);
-	\draw (0.5, 3) -- (4, 3);
-	\draw (8.25, 5) to[capacitor, l={$C2$}, label distance=0.02cm] (8.25, 3);
-	\draw (8.25, 5) |- (7, 5.25);
-	\draw (8.25, 3) |- (7, 3);
-	\draw (4, 3) -- (7, 3);
-	\draw (4, 9) -- (7, 9);
-	\draw (5.5, 9) -- (5.5, 9);
-	\draw (9, 6.75) to[capacitor, l={$C3$}, label distance=0.02cm] (7, 6.75);
-	\node[vcc](N1) at (5.5, 9){} node[anchor=south] at ([yshift=0.03cm]N1.north){$V_{CC}$};
-	\draw (10.75, 3) to[american resistor, l={$R_{L}$}, label distance=0.02cm] (10.75, 6.75);
-	\draw (10.75, 6.75) -- (9, 6.75);
-	\draw (8.25, 3) -- (10.75, 3);
-\end{tikzpicture}
-  \section{Enunciado y datos iniciales}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    	\node[npn](N1) at (9.25, 5.75){} node[anchor=west] at (N1.text){$Q1$};
+    	\draw (7, 5) to[american resistor, l={$R_1$}] (7, 2.75);
+    	\draw (7, 5.75) to[capacitor, l={$C_1$}] (3, 5.75);
+    	\draw (7, 5.75) -- (8.41, 5.75);
+    	\draw (9.25, 5) to[american resistor, l={$R_E$}] (9.25, 2.75);
+    	\draw (3, 5.75) to[sinusoidal voltage source, l={$v_i$}] (3, 2.5);
+    	\draw (7, 8.75) to[american resistor, l={$R_2$}, name=R1] (7, 6.5);
+    	\draw (9.25, 8.77) to[american resistor, l={$R_c$}] (9.25, 6.52);
+    	\draw (7, 5) -| (7, 6.5);
+    	\draw (11, 5) to[capacitor, l={$C_E$}] (11, 2.75);
+    	\draw (9.25, 5) -- (11, 5);
+    	\draw (7, 8.75) -| (7, 9) -| (9.25, 8.77);
+    	\draw (11, 2.75) |- (7, 2.5) -| (7, 2.75);
+    	\draw (9.25, 2.75) -| (9.25, 2.5);
+    	\draw (3, 2.5) -- (7, 2.5);
+    	\draw (10.25, 6.5) to[capacitor, l={$C_2$}] (13, 6.5);
+    	\draw (13.75, 5.5) to[american resistor, l={$R_L$}] (13.75, 3.25);
+    	\draw (13.75, 6.5) -| (13.75, 5.5);
+    	\draw (11, 2.5) -| (13.75, 3.25);
+    	\node[vcc](N2) at (9.25, 9.75){} node[anchor=south] at (N2.text){$V_{cc}$};
+    	\draw (9.25, 9) -| (9.25, 9.75);
+    	\node[ground] at (9.25, 2){};
+    	\draw (9.25, 2.5) -| (9.25, 2);
+    	\draw (10.25, 6.5) -- (9.25, 6.5);
+    	\draw (13, 6.5) -- (13.75, 6.5);
+    \end{tikzpicture}
+    \caption{Amplificador emisor común}
+    \label{fig:amplificador}
+\end{figure}
+
+\section{Enunciado y datos iniciales}
     % Copiar aquí el planteo y los datos (RE, RC, RL, elección de transistor y VCC)
   \section{Cálculo de R1 y R2}
     \subsection{Teorema de Thévenin en red de entrada}
