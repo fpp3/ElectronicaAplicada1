@@ -112,61 +112,62 @@ $Q_{MES}$, así como la comparación entre la recta de carga de continua y la de
 \end{figure}
 
 \section{Cálculo de R1 y R2} \label{section:calc_r1_r2}
-    % Copiar aquí el planteo y los datos (RE, RC, RL, elección de transistor y VCC)
-    Los datos iniciales con los que se cuenta son:
-    \begin{itemize}
-        \item $R_E = 180\Omega$
-        \item $R_C = 1.2K\Omega$
-        \item $R_L = 1K\Omega$
-        \item $V_{CC} = 12V$
-    \end{itemize}
-    Adicionalmente, se ha elegido un transistor modelo BC337-40 con un $\beta = 484$, valor que fue medido con un
-    multímetro.
-    
-    Teniendo esto en cuenta, se puede comenzar aplicando el teorema de Thévenin a la red de entrada del circuito
-    \ref{fig:amplificador}, obteniendo el circuito de la figura \ref{fig:malla-entrada}.
-    
-    \begin{figure}[H]
+Los datos iniciales con los que se cuenta son:
+\begin{itemize}
+    \item $R_E = 180\Omega$
+    \item $R_C = 1.2K\Omega$
+    \item $R_L = 1K\Omega$
+    \item $V_{CC} = 12V$
+\end{itemize}
+Adicionalmente, se ha elegido un transistor modelo BC337-40 con un $\beta = 484$, valor que fue medido con un
+multímetro.
+
+El objetivo principal es calcular los valores de $R_1$ y $R_2$ adecuados para polarizar el transistor de modo tal que
+se pueda obtener MES para la señal amplificada. Teniendo esto en cuenta, se puede comenzar aplicando el teorema de
+Thévenin a la red de entrada del circuito \ref{fig:amplificador}, obteniendo el circuito de la figura
+\ref{fig:malla-entrada}.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.4\textwidth}
         \centering
-        \begin{minipage}{0.4\textwidth}
-            \centering
-            \begin{tikzpicture}
-                \node[npn](N1) at (1.59, 2){} node[anchor=west] at (N1.text){$Q1$};
-                \draw (1.59, 1.25) to[american resistor, l={$R_E$}] (1.59, -1);
-                \draw (1.59, 5.02) to[american resistor, l={$R_c$}] (1.59, 2.77);
-                \draw (1.59, -1) -| (1.59, -1.25);
-                \node[vcc](N2) at (1.59, 6){} node[anchor=south] at (N2.text){$V_{cc}$};
-                \draw (1.59, 5.25) -| (1.59, 6);
-                \node[ground] at (1.59, -1.75){};
-                \draw (1.59, -1.25) -| (1.59, -1.75);
-                \draw (-1.66, 2) to[american resistor, l={$R_B$}] (-1.66, -0.25);
-                \draw (-1.66, -0.25) to[battery1, l={$V_{BB}$}] (-1.66, -1.5);
-                \draw (-1.66, 2) -| (0.75, 2);
-                \draw (-1.66, -1.5) -| (-1.66, -1.75) -- (1.59, -1.75);
-                \draw (1.59, 5.02) -| (1.59, 5.25);
-            \end{tikzpicture}
-            \caption{Malla de entrada simplificada por Thévenin.}
-            \label{fig:malla-entrada}
-        \end{minipage}%
-        \begin{minipage}{0.4\textwidth}
-            \centering
-            Donde $R_{B}$ es la resistencia equivalente y $V_{BB}$ es la tensión de Thévenin:
-            \begin{align}
-                R_{B} &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \label{ec:thevenin-rb}\\
-                V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \label{ec:thevenin-vbb}
-            \end{align}
-            Se debe determinar los valores de $R_B$ y $V_{BB}$ con el objetivo de polarizar
-            el transistor para MES.
-        \end{minipage}
-    \end{figure}
+        \begin{tikzpicture}
+            \node[npn](N1) at (1.59, 2){} node[anchor=west] at (N1.text){$Q1$};
+            \draw (1.59, 1.25) to[american resistor, l={$R_E$}] (1.59, -1);
+            \draw (1.59, 5.02) to[american resistor, l={$R_c$}] (1.59, 2.77);
+            \draw (1.59, -1) -| (1.59, -1.25);
+            \node[vcc](N2) at (1.59, 6){} node[anchor=south] at (N2.text){$V_{cc}$};
+            \draw (1.59, 5.25) -| (1.59, 6);
+            \node[ground] at (1.59, -1.75){};
+            \draw (1.59, -1.25) -| (1.59, -1.75);
+            \draw (-1.66, 2) to[american resistor, l={$R_B$}] (-1.66, -0.25);
+            \draw (-1.66, -0.25) to[battery1, l={$V_{BB}$}] (-1.66, -1.5);
+            \draw (-1.66, 2) -| (0.75, 2);
+            \draw (-1.66, -1.5) -| (-1.66, -1.75) -- (1.59, -1.75);
+            \draw (1.59, 5.02) -| (1.59, 5.25);
+        \end{tikzpicture}
+        \caption{Malla de entrada simplificada por Thévenin.}
+        \label{fig:malla-entrada}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        Donde $R_{B}$ es la resistencia equivalente y $V_{BB}$ es la tensión de Thévenin:
+        \begin{align}
+            R_{B} &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \label{ec:thevenin-rb}\\
+            V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \label{ec:thevenin-vbb}
+        \end{align}
+        Se debe determinar los valores de $R_B$ y $V_{BB}$ con el objetivo de polarizar
+        el transistor para MES.
+    \end{minipage}
+\end{figure}
 
-    Aplicando LKV a la malla de entrada:
+Aplicando LKV a la malla de entrada:
 
-    \begin{align*}
-        V_{BB} - I_{BQ} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
-        V_{BB} - \frac{I_{CQ}}{\beta} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
-        I_{CQ} &= \frac{V_{BB} - V_{BEQ}}{R_E + \frac{R_B}{\beta}} 
-    \end{align*}
+\begin{align*}
+    V_{BB} - I_{BQ} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
+    V_{BB} - \frac{I_{CQ}}{\beta} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
+    I_{CQ} &= \frac{V_{BB} - V_{BEQ}}{R_E + \frac{R_B}{\beta}} 
+\end{align*}
 
 Considerando el siguiente criterio de diseño: 
 
@@ -383,7 +384,53 @@ observar si la intersección de las mismas se da en el punto $Q_{MES}$ recién c
 
 \section{Simulación}
 
-\section{Implementación y mediciones}
-    \subsection{Mediciones en circuito implementado}
-    \subsection{Consideraciones de medición}
-    \subsection{Cálculo de parámetros a partir de mediciones}
+Una vez hechos los cálculos de diseño y determinados los valores de las resistencias de polarización para el transistor,
+considerando el criterio de MES, se procede a realizar una simulación del circuito amplificador. El objetivo de esto es
+verificar que los resultados de diseño sean coherentes con el comportamiento real esperado del transistor.
+
+El programa utilizado para la simulación es LTSpice, y el modelo del transistor fue obtenido de la página de un
+fabricante, de modo que podemos asegurar que se trata de un modelo válido y funcional. La utilización de un simulador
+presenta la ventaja de poder anticipar el desempeño del circuito sin necesidad de un montaje físico, incluyendo
+efectos que en los cálculos manuales suelen despreciarse. Por este motivo, los valores obtenidos en simulación pueden
+diferir levemente de los calculados en papel, aunque en conjunto ambos métodos permiten predecir de manera confiable el
+comportamiento del amplificador antes de su implementación práctica.
+
+En la figura \ref{fig:pto_q_ideal} se muestra la simulación implementada en el programa
+mencionado.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{pto_q_ideal.png}
+    \caption{simulación del punto Q con las resistencias obtenidas analíticamente.}
+    \label{fig:placeholder}
+\end{figure}
+
+Se puede observar que efectivamente hay un poco de discrepancia entre los valores de
+$I_{CQ_{MES}}$ y $V_{CEQ_{MES}}$ obtenidos analíticamente y los obtenidos en la simulación.
+Sin embargo, los valores de simulación están dentro de un rango de tolerancia de $\pm10\%$
+como se puede observar:
+
+Análiticamente se obutuvo $I_{CQ_{MES}} = 6.26mA$, mientras que en la simulación se obtuvo un valor de $I_C = 6.457mA$.
+Como se admite una tolerancia de $\pm 10\%$:
+
+\begin{align*}
+I_{C,\text{max}} &= 6.26mA + 0.10 \cdot 6.26mA = 6.85mA \\
+I_{C,\text{min}} &= 6.26mA - 0.10 \cdot 6.26mA = 5.61mA
+\end{align*}
+
+Por lo tanto, el rango de validez es:
+\[
+5.61mA \leq I_C \leq 6.85mA
+\]
+
+Dado que en la simulación $I_C = 6.457mA$, se cumple que:
+\[
+5.61mA \leq 6.457m \leq 6.85mA
+\]
+
+lo cual demuestra que los valores obtenidos mediante los cálculos analíticos y los 
+obtenidos mediante simulación son correctos.
+
+Con esto en claro, se puede continuar con la normalización de las magnitudes
+de las resistencias $R_1$ y $R_2$. Es decir, se procede a aproximar los valores obtenidos 
+mediante cálculos a valores comerciales.
