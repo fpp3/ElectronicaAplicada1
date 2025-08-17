@@ -1,5 +1,6 @@
 \documentclass[chaptersright]{informeutn}
 \usepackage{circuitikz}
+\usepackage{amssymb}
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
 % Datos del informe
@@ -28,7 +29,7 @@ estable frente a variaciones del $\beta$.
 El circuito incluye las resistencias $R_1$, $R_2$, $R_E$, $R_C$ y $R_L$, junto a capacitores de desacople y una fuente de 
 alimentación $V_{CC}$. Algunos de estos valores fueron fijados por las consignas del trabajo.
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
     \begin{tikzpicture}
     	\node[npn](N1) at (9.25, 5.75){} node[anchor=west] at (N1.text){$Q1$};
@@ -74,7 +75,7 @@ evitando distorsiones. La Figura \ref{fig:gráfica-mes} ilustra este concepto, d
 $Q_{MES}$, así como la comparación entre la recta de carga de continua y la de alterna.
 
 
-\begin{figure}[H]
+\begin{figure}[!ht]
     \centering
     \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
     %uncomment if require: \path (0,538); %set diagram left start at 0, and has height of 538
@@ -133,7 +134,7 @@ $Q_{MES}$, así como la comparación entre la recta de carga de continua y la de
     \label{fig:gráfica-mes}
 \end{figure}
 
-\section{Enunciado y datos iniciales}
+\section{Cálculo de R1 y R2}
     % Copiar aquí el planteo y los datos (RE, RC, RL, elección de transistor y VCC)
     Los datos iniciales con los que se cuenta son:
     \begin{itemize}
@@ -142,10 +143,67 @@ $Q_{MES}$, así como la comparación entre la recta de carga de continua y la de
         \item $R_L = 1K\Omega$
         \item $V_{CC} = 12V$
     \end{itemize}
-    Adicionalmente, se ha elegido un transistor con: $\beta = 484$
+    Adicionalmente, se ha elegido un transistor modelo BC337-40 con un $\beta = 484$, valor que fue medido con un
+    multímetro.
+    Teniendo esto en cuenta, se puede comenzar aplicando teorema de Thévenin a la red de entrada del circuito
+    \ref{fig:amplificador}, obteniendo el circuito de la figura \ref{fig:malla-entrada}.
+    
+    \begin{figure}[!ht]
+        \centering
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \node[npn](N1) at (1.59, 2){} node[anchor=west] at (N1.text){$Q1$};
+                \draw (1.59, 1.25) to[american resistor, l={$R_E$}] (1.59, -1);
+                \draw (1.59, 5.02) to[american resistor, l={$R_c$}] (1.59, 2.77);
+                \draw (1.59, -1) -| (1.59, -1.25);
+                \node[vcc](N2) at (1.59, 6){} node[anchor=south] at (N2.text){$V_{cc}$};
+                \draw (1.59, 5.25) -| (1.59, 6);
+                \node[ground] at (1.59, -1.75){};
+                \draw (1.59, -1.25) -| (1.59, -1.75);
+                \draw (-1.66, 2) to[american resistor, l={$R_B$}] (-1.66, -0.25);
+                \draw (-1.66, -0.25) to[battery1, l={$V_{BB}$}] (-1.66, -1.5);
+                \draw (-1.66, 2) -| (0.75, 2);
+                \draw (-1.66, -1.5) -| (-1.66, -1.75) -- (1.59, -1.75);
+                \draw (1.59, 5.02) -| (1.59, 5.25);
+            \end{tikzpicture}
+            \caption{Malla de entrada simplificada por Thévenin.}
+            \label{fig:malla-entrada}
+        \end{minipage}%
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            Donde $R_{B}$ la resistencia equivalente y $V_{BB}$ es la tensión de Thévenin:
+            \begin{align*}
+                R_{B} &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \\
+                V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \\
+            \end{align*}
+        \end{minipage}
+    \end{figure}
 
-  \section{Cálculo de R1 y R2}
-    \subsection{Teorema de Thévenin en red de entrada}
+    Aplicando LKV a la malla de entrada:
+
+    \begin{align*}
+        V_{BB} - I_{BQ} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
+        V_{BB} - \frac{I_{CQ}}{\beta} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \\
+        I_{CQ} &= \frac{V_{BB} - V_{BEQ}}{R_E + \frac{R_B}{\beta}} 
+    \end{align*}
+
+Considerando el siguiente criterio de diseño: 
+
+\begin{equation*}
+    R_E  \gg \frac{R_b}{\beta} \therefore R_E = 10\frac{R_B}{\beta} \therefore \frac{R_B}{\beta} = \frac{R_E}{10}
+\end{equation*}
+
+Se tiene:
+
+\begin{equation*}
+    I_{CQ} = \frac{V_{BB} - V_{BEQ}} {R_E + \frac{R_E}{10}}
+\end{equation*}
+
+
+    
+
+\subsection{Teorema de Thévenin en red de entrada}
     \subsection{Análisis de malla de entrada}
     \subsection{Criterios de diseño y fórmulas generales}
     \subsection{Cálculo final de R1 y R2}
