@@ -47,14 +47,14 @@
         \beta &= 484
       \end{align*}
     \end{minipage}
-    \caption{Amplificador emisor común con resistencias normalizadas.}
+    \caption{amplificador emisor común con resistencias normalizadas.}
   \end{figure}
 
   No logramos encontrar un conjunto de resistencias normalizadas que nos permitiesen estar dentro del margen de
   tolerancia del punto Q, asi que fijamos la $R_1$ al valor normalizado mas cercano, y jugamos con la $R_2$ para
   encontrar un serie de resistencias normalizadas. Al final, quedamos con un serie de 3K3 y 51K1. Se procede a corroborar
   si el punto Q esta dentro del 10\% del calculado con los valores analiticos de las resistencias, reemplazando su
-  valor en las ecuaciones \warn ICQ REF y VCEQ REF.
+  valor en las ecuaciones \ref{eq:icq} y \ref{ec:malla-salida-cc}.
 
   \begin{figure}[!ht]
     \centering
@@ -232,7 +232,7 @@
               ymin=0, ymax=15,
               grid=both,
               width=8cm,
-              height=7cm,
+              height=8cm,
               xtick={0,2,...,12},
               ytick={0,2,...,14},
           ]
@@ -261,8 +261,81 @@
     \end{figure}
 
     De esta forma, corroboramos que el punto Q esta donde intersecan ambas rectas de carga. Cabe destacar que para todos
-    los calculos, se utilizadon los valores calculados del punto Q con las resistencias normalizadas.
-  \section{Obtención experimental de parámetros}
-    \subsection{Corrientes en el divisor resistivo}
-    \subsection{Verificación de resultados}
+    los calculos, se utilizadon los valores calculados del punto Q con las resistencias normalizadas. Cabe destacar que
+    los valores pico de corriente y voltaje de la señal amplificada, estan dados por la mitad del valor de los cortes
+    en los ejes de la recta de carga en CA, por lo que las amplitudes maximas para la señal de salida serian de $3.52V$
+    y $6.47mA$.
+\newpage
+  \section{Laboratorio}
+    \begin{wrapfigure}{R}{0.4\textwidth}
+      \vspace{-1cm}
+      \centering
+      \includegraphics[width=0.35\textwidth]{pictures/pcb.jpg}
+      \caption{circuito ensamblado.}
+      \label{fig:pcb}
+    \end{wrapfigure}
+    Para realizar las mediciones del punto Q, ensamblamos el circuito para analizar la polarizacion en CC en la PCB que
+    se puede ver en la figura \ref{fig:pcb}. La PCB nos permite con facilidad hacer series y paralelos para cada
+    resistencia que hay en el circuito.
 
+    \subsection{Medicion de parametros de polarizacion}
+      Para la medicion de corrientes, se decidio medirlas de manera indirecta. De esta forma, no se genera una
+      alteracion tan grande en el circuito como si se midiese en serie, pudiendo tener efectos adversos por la
+      resistencia agregada de contacto y cables del multimetro.
+      \begin{figure}[!ht]
+        \centering
+        \begin{minipage}{0.49\textwidth}
+          \centering
+          \includegraphics[width=1\textwidth]{pictures/mult_vce.jpg}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.49\textwidth}
+          \centering
+          \includegraphics[width=1\textwidth]{pictures/mult_vr2.jpg}
+        \end{minipage}
+        \caption{algunas mediciones realizadas.}
+      \end{figure}
+
+    \begin{figure}[!ht]
+      \centering
+      \begin{minipage}[t]{0.33\textwidth}
+        $V_{R_2} = 10.23V, R_2 = 53.8K\Omega$:
+        \begin{gather*}
+          I_{R_2} = \frac{V_{R_2}}{R_2}\\[6pt]
+          I_{R_2} = 190.148 \mu A
+        \end{gather*}
+      \end{minipage}
+      \begin{minipage}[t]{0.32\textwidth}
+        $V_{R_1} = 1.76V, R_1 = 9.91 K\Omega$:
+        \begin{gather*}
+          I_{R_1} = \frac{V_{R_1}}{R_1}\\[6pt]
+          I_{R_1} = 177.598 \mu A
+        \end{gather*}
+      \end{minipage}
+      \begin{minipage}[t]{0.33\textwidth}
+        $V_{R_C} = 7.86V, R_1 = 1206\Omega$:
+        \begin{gather*}
+          I_{CQ} = \frac{V_{R_C}}{R_C}\\[6pt]
+          I_{CQ} =  6.51 mA
+        \end{gather*}
+      \end{minipage}
+    \end{figure}
+    \begin{equation*}
+      I_{BQ} = I_{R_2} - I_{R_1} = 12.55 \mu A\\[6pt]
+    \end{equation*}
+
+    Con todos los valores de corriente calculados, en la tabla \ref{tab:comparativa_real-calc} se pueden ver los valores
+    medidos y los valores calculados con resistencias normalizadas.
+    \begin{table}[!ht]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+                  & $I_{R_1}$       & $I_{R_2}$       & $I_{CQ}$  & $I_{BQ}$        & $V_{CEQ}$ \\ \hline
+        Simulado  & $175.514 \mu A$ & $188.671 \mu A$ & $6.15 mA$ & $13.156 \mu A$  & $3.51V$   \\ \hline
+        Medido    & $177.589 \mu A$ & $190.148 \mu A$ & $6.51 mA$ & $12.55 \mu A$   & $3.17V$   \\ \hline
+      \end{tabular}
+      \caption{comparativa de valores de polarizacion medidos y calculados.}
+      \label{tab:comparativa_real-calc}
+    \end{table}
+    Confirmamos entonces que el circuito armado en la PCB esta polarizado para MES dentro del margen de tolerancia
+    permitido del 10\%.

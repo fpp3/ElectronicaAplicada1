@@ -1,2 +1,2 @@
 all:
-	pdflatex tp3.tex
+	latexmk -pdf tp3.tex
