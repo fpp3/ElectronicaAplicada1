@@ -1,9 +1,177 @@
 \chapter{Mediciones de pequeña señal}
   \section{Análisis teórico (método analítico)}
+   
     \subsection{Circuito híbrido equivalente}
+    \begin{tikzpicture}
+	  % Paths, nodes and wires:
+    	\draw (4, 3) to[american current source, l={$I_i$}] (4, 7);
+    	\draw (6, 3) to[american resistor, l={$R_2$}] (6, 7);
+    	\draw (8, 3) to[american resistor, l={$R_1$}] (8, 7);
+    	\draw (10, 3) to[american resistor, l_={$h_{ie}$}] (10, 7);
+    	\draw (14.25, 7) to[american current source, l_={$i_b . h_{fe}$}] (14.25, 3);
+    	\draw (16, 3) to[american resistor, l_={$R_C$}] (16, 7);
+    	\draw (18, 3) to[american resistor, l_={$R_L$}] (18, 7);
+    	\node[ground] at (12, 3){};
+    	\node[shape=rectangle, draw={rgb,255:red,139;green,19;blue,19}, line width=1pt, minimum width=5.465cm, minimum height=2.215cm] at (12.25, 5.125){};
+    	\draw (6, 7) -- (8, 7);
+    	\draw (10, 7) -- (8, 7);
+    	\draw (5.75, 7) -- (6, 7);
+    	\draw (4, 7) -- (5.75, 7);
+    	\draw (4, 3) -- (10, 3) -- (18, 3);
+    	\draw (18, 7) -- (14.25, 7);
+    \end{tikzpicture}
+
+    
+    
     \subsection{Cálculo de $Z_i$, $Z_o$, $A_i$ y $A_v$}
+            
+      \newcommand{\RB}{8447.20\,\Omega}
+      \newcommand{\RC}{1.2\,\text{k}\Omega}
+      \newcommand{\RL}{1\,\text{k}\Omega}
+      \newcommand{\hfe}{484}
+      \newcommand{\HIE}{1861.53\,\Omega} % poné 1942.21\,\Omega si usás I_{Cq,calc}
+      
+      
+      \noindent
+      \begin{minipage}[t]{0.45\linewidth}
+      \begin{align*}
+      Z_i &= \frac{R_B \cdot h_{ie}}{R_B + h_{ie}} \\
+          &= \frac{\RB \cdot \HIE}{\RB + \HIE} \\
+          &= \boxed{1525.38\,\Omega} \\[16pt]
+      Z_o &\simeq R_C = \boxed{1.2\,\text{k}\Omega}
+      \end{align*}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.45\linewidth}
+      \begin{align*}
+      A_i &= -h_{fe}\cdot \frac{R_C}{R_C+R_L}\cdot \frac{R_B}{R_B+h_{ie}} \\
+          &= -\hfe \cdot \frac{\RC}{\RC+\RL}\cdot \frac{\RB}{\RB+\HIE} \\
+          &= \boxed{-216.33} \\[16pt]
+      A_v &= A_i \cdot \frac{R_L}{Z_i} \\
+          &= (-216.33)\cdot \frac{\RL}{1525.38\,\Omega} \\
+          &= \boxed{-141.82}
+      \end{align*}
+      \end{minipage}    
+
   \section{Análisis experimental}
-    \subsection{Impedancia de entrada}
-    \subsection{Ganancia de tensión}
-    \subsection{Ganancia de corriente}
+    Para la medicion de pequeña senañ de forma exxperimental, se suelda una resistencia de $2\text{K}2\Omega$ a la entrada
+    del circuito, la cual va a ser utilizada como Resistencia sensora. tambien se sueldan los correspondientes capacitores
+    de acople y desacople.
+
+    Luego se procede a ajustar la tension de entrada de tal forma que a la salida se obtenga una onda senoidal con una
+    tension de $1V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el siguiente
+    grafico:
+
+    \begin{tikzpicture}
+    	% Paths, nodes and wires:
+    	\draw (7.25, 3) to[sinusoidal voltage source, l_={$V_{gen} \, \text{F = 1KHz}$}, label distance=0.02cm] (7.25, 6);
+    	\draw (7.25, 6) to[american resistor, l={$R_s = 2K2 \Omega$}] (12, 6);
+    	\node[shape=rectangle, draw, line width=1pt, minimum width=3.215cm, minimum height=4.965cm](N1) at (13.625, 4.5){} node[anchor=center] at (N1.text){$CIRCUITO$};
+    	\draw (7.25, 3) -- (12, 3);
+    	\draw (8, 8) to[qvprobe, l={$V_s$}] (11, 8);
+    	\draw (10.75, 6) to[qvprobe, l={$V_i$}] (10.75, 3);
+    	\draw (8, 8) -| (8, 6);
+    	\draw (11, 8) -- (11, 6);
+    	\draw (18.75, 6) to[american resistor, l={$R_L = 1K \Omega$}] (18.75, 3);
+    	\draw (18.75, 6) -- (15.25, 6);
+    	\draw (18.75, 3) -- (15.25, 3);
+    	\draw (16, 6) to[qvprobe, l={$V_o = 1V_{pp}$}] (16, 3);
+    \end{tikzpicture}
+
+    
+    \vspace{0.5cm}
+    A partir de las mediciones se tiene:
+    \[
+    V_S = 22\,\text{mV}, \qquad V_i = 13\,\text{mV}
+    \]
+
+    Por la Ley de Ohm:
+    \[
+    I_i = \frac{V_S - V_i}{R_S}
+         = \frac{22\,\text{mV} - 13\,\text{mV}}{2.2\,\text{k}\Omega}
+         = 4.091\,\mu\text{A}
+    \]
+
+    
+    \noindent
+    \begin{minipage}[t]{0.48\linewidth}
+        \subsection*{Impedancia de entrada}
+        \[
+        Z_i = \frac{V_i}{I_i}
+             = \frac{13\,\text{mV}}{4.091\,\mu\text{A}}
+             = \boxed{3.177\,\text{k}\Omega}
+        \]
+    
+        \subsection*{Ganancia de tensión $A_v$}
+        \[
+        A_v=\frac{V_O}{V_i}
+             =\frac{1\,\text{V}_{pp}}{13\,\text{mV}}
+             =\frac{1}{0.013}
+             =\boxed{76.92}
+        \]
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\linewidth}
+        \subsection*{Ganancia de corriente $A_i$}
+        \[
+        A_i=\frac{i_O}{i_i}
+            =\frac{\dfrac{V_O}{R_L}}{\dfrac{V_S - V_i}{R_{\text{sensor}}}}
+        \]
+        \[
+        A_i=\frac{\dfrac{1\,\text{V}}{1\,\text{k}\Omega}}{\dfrac{22\,\text{mV}-13\,\text{mV}}{2.2\,\text{k}\Omega}}
+            =\frac{\dfrac{1}{1000}}{\dfrac{0.022-0.013}{2200}}
+        \]
+        \[
+        A_i=\frac{0.001}{\dfrac{0.009}{2200}}
+            =\frac{0.001}{4.0909\times10^{-6}}
+            =\boxed{244.4}
+        \]
+    \end{minipage}
+
+    
     \subsection{Impedancia de salida}
+    Para la medicion de la impedancia de salida, se pone el generador a la salida y el mismo se configura para que con
+    una resistencia sensora, haya $!V_{PP}$ a la salida como se muestra en el siguiente grafico
+
+    \begin{tikzpicture}
+    	% Paths, nodes and wires:
+    	\node[shape=rectangle, draw, line width=1pt, minimum width=3.215cm, minimum height=4.965cm](N1) at (13.625, 4.5){} node[anchor=center] at (N1.text){$CIRCUITO$};
+    	\draw (10, 3) -- (12, 3);
+    	\draw (15.25, 6) to[american resistor, l={$R_s = 1K \Omega$}] (20.75, 6);
+    	\draw (20.75, 3) -- (15.25, 3);
+    	\draw (16, 6) to[qvprobe, l={$V_o =1V_{PP}$}] (16, 3);
+    	\draw (10, 3) |- (12, 6);
+    	\draw (20.75, 6) to[sinusoidal voltage source, l={$\:1KHz$}] (20.75, 3);
+    	\draw (16, 8) to[qvprobe, l={$V_s$}] (20, 8);
+    	\draw (16, 8) -- (16, 6);
+    	\draw (20, 8) -- (20, 6);
+    \end{tikzpicture}
+
+    \vspace{0.5cm}
+
+    En nuestro caso, abrimos la salida y usamos la $R_L$ como $R_S$.
+
+    La impedancia de salida se obtiene como:
+
+    \[
+    Z_o = \frac{V_o}{i_o} 
+         = \frac{V_o}{\dfrac{V_s - V_o}{R_s}}
+    \]
+    
+    Reemplazando con los valores medidos:
+    
+    \[
+    Z_o = \frac{1\,\text{V}}{\dfrac{1.85\,\text{V} - 1\,\text{V}}{1\,\text{k}\Omega}}
+    \]
+    
+    \[
+    Z_o = \frac{1\,\text{V}}{\dfrac{0.85\,\text{V}}{1000\,\Omega}}
+    \]
+    
+    \[
+    Z_o = \frac{1}{0.00085}\,\Omega
+    \]
+    
+    \[
+    Z_o = \boxed{1176.47\,\Omega}
+    \]
+
+

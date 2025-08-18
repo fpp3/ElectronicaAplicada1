@@ -1,0 +1,189 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "rect",
+            "label": {
+                "value": "CIRCUITO",
+                "anchor": "default",
+                "position": "default",
+                "distance": "0.12cm"
+            },
+            "position": {
+                "x": 514.961,
+                "y": -170.079
+            },
+            "size": {
+                "x": 122.835,
+                "y": 188.976
+            }
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 377.953,
+                    "y": -113.386
+                },
+                {
+                    "x": 453.543,
+                    "y": -113.386
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                null
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 576.378,
+                    "y": -226.772
+                },
+                {
+                    "x": 784.252,
+                    "y": -226.772
+                }
+            ],
+            "label": {
+                "value": "R_s = 1K \\Omega",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 784.252,
+                    "y": -113.386
+                },
+                {
+                    "x": 576.378,
+                    "y": -113.386
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                null
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 604.724,
+                    "y": -226.772
+                },
+                {
+                    "x": 604.724,
+                    "y": -113.386
+                }
+            ],
+            "label": {
+                "value": "V_o =1V_{PP}",
+                "distance": "0.12cm"
+            },
+            "id": "qvprobe"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 377.953,
+                    "y": -113.386
+                },
+                {
+                    "x": 453.543,
+                    "y": -226.772
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "|-"
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 784.252,
+                    "y": -226.772
+                },
+                {
+                    "x": 784.252,
+                    "y": -113.386
+                }
+            ],
+            "label": {
+                "value": "\\:1KHz",
+                "distance": "0.12cm"
+            },
+            "id": "sinusoidal voltage source"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 604.724,
+                    "y": -302.362
+                },
+                {
+                    "x": 755.906,
+                    "y": -302.362
+                }
+            ],
+            "label": {
+                "value": "V_s",
+                "distance": "0.12cm"
+            },
+            "id": "qvprobe"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 604.724,
+                    "y": -302.362
+                },
+                {
+                    "x": 604.724,
+                    "y": -226.772
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                null
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 755.906,
+                    "y": -302.362
+                },
+                {
+                    "x": 755.906,
+                    "y": -226.772
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                null
+            ]
+        }
+    ]
+}
