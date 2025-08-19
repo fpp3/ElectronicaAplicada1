@@ -4,7 +4,7 @@
     \subsection{Circuito híbrido equivalente}
     \begin{tikzpicture}
 	  % Paths, nodes and wires:
-    	\draw (4, 3) to[american current source, l={$I_i$}] (4, 7);
+    	\draw (4, 3) to[sinusoidal voltage source, l={$I_i$}] (4, 7);
     	\draw (6, 3) to[american resistor, l={$R_2$}] (6, 7);
     	\draw (8, 3) to[american resistor, l={$R_1$}] (8, 7);
     	\draw (10, 3) to[american resistor, l_={$h_{ie}$}] (10, 7);
@@ -30,6 +30,8 @@
       \newcommand{\RL}{1\,\text{k}\Omega}
       \newcommand{\hfe}{484}
       \newcommand{\HIE}{1861.53\,\Omega} % poné 1942.21\,\Omega si usás I_{Cq,calc}
+
+      Recordar que $R_B=R_1\parallel R_2$
       
       
       \noindent
@@ -53,31 +55,55 @@
       \end{minipage}    
 
   \section{Análisis experimental}
-    Para la medicion de pequeña senañ de forma exxperimental, se suelda una resistencia de $2\text{K}2\Omega$ a la entrada
+    \begin{figure}[H]
+      \centering
+      \begin{minipage}[t]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pictures/pcb_completa_mediciones.jpg}
+        \caption*{Montaje real}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.59\textwidth}
+        \centering
+        \resizebox{\linewidth}{!}{%
+          \begin{tikzpicture}
+            \draw (7.25, 3) to[sinusoidal voltage source, l_={$V_{gen}\,(1\,\mathrm{kHz})$}, label distance=0.02cm] (7.25, 6);
+            \draw (7.25, 6) to[american resistor, l={$R_s=2.2\,\mathrm{k}\Omega$}] (12, 6);
+            \node[shape=rectangle, draw, line width=1pt, minimum width=3.215cm, minimum height=4.965cm](N1) at (13.625, 4.5){} node[anchor=center] at (N1.text){$CIRCUITO$};
+            \draw (7.25, 3) -- (12, 3);
+            \draw (8, 8) to[qvprobe, l={$V_s$}] (11, 8);
+            \draw (10.75, 6) to[qvprobe, l={$V_i$}] (10.75, 3);
+            \draw (8, 8) -| (8, 6);
+            \draw (11, 8) -- (11, 6);
+            \draw (18.75, 6) to[american resistor, l={$R_L=1\,\mathrm{k}\Omega$}] (18.75, 3);
+            \draw (18.75, 6) -- (15.25, 6);
+            \draw (18.75, 3) -- (15.25, 3);
+            \draw (16, 6) to[qvprobe, l={$V_o=1\,V_{pp}$}] (16, 3);
+          \end{tikzpicture}
+        }
+        \caption*{Esquema de medición}
+      \end{minipage}
+      \caption{Esquemático de medicion experimenta y experiencia en laboratorio.}
+      \label{fig:foto-tikz-inline}
+    \end{figure}
+
+    Para la medicion de pequeña senañ de forma experimental, se suelda una resistencia de $2\text{K}2\Omega$ a la entrada
     del circuito, la cual va a ser utilizada como Resistencia sensora. tambien se sueldan los correspondientes capacitores
     de acople y desacople.
 
     Luego se procede a ajustar la tension de entrada de tal forma que a la salida se obtenga una onda senoidal con una
-    tension de $1V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el siguiente
-    grafico:
+    tension de $V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el grafico de
+    arriba.
 
-    \begin{tikzpicture}
-    	% Paths, nodes and wires:
-    	\draw (7.25, 3) to[sinusoidal voltage source, l_={$V_{gen} \, \text{F = 1KHz}$}, label distance=0.02cm] (7.25, 6);
-    	\draw (7.25, 6) to[american resistor, l={$R_s = 2K2 \Omega$}] (12, 6);
-    	\node[shape=rectangle, draw, line width=1pt, minimum width=3.215cm, minimum height=4.965cm](N1) at (13.625, 4.5){} node[anchor=center] at (N1.text){$CIRCUITO$};
-    	\draw (7.25, 3) -- (12, 3);
-    	\draw (8, 8) to[qvprobe, l={$V_s$}] (11, 8);
-    	\draw (10.75, 6) to[qvprobe, l={$V_i$}] (10.75, 3);
-    	\draw (8, 8) -| (8, 6);
-    	\draw (11, 8) -- (11, 6);
-    	\draw (18.75, 6) to[american resistor, l={$R_L = 1K \Omega$}] (18.75, 3);
-    	\draw (18.75, 6) -- (15.25, 6);
-    	\draw (18.75, 3) -- (15.25, 3);
-    	\draw (16, 6) to[qvprobe, l={$V_o = 1V_{pp}$}] (16, 3);
-    \end{tikzpicture}
+    \begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{@{}X X@{}}
+    \includegraphics[width=\linewidth]{pictures/osc_vi_0.2ms-0.2v.jpg} &
+    \includegraphics[width=\linewidth]{pictures/osc_vl_0.5ms-20mv-sondax10-oscx5.jpg} \\
+    \centering\small Señal en Rs & \centering\small Señal de salida
+  \end{tabularx}
+    \caption{Mediciones en la entrada y salida del amplificador}
+    \end{table}
 
-    
     \vspace{0.5cm}
     A partir de las mediciones se tiene:
     \[
@@ -125,11 +151,16 @@
             =\boxed{244.4}
         \]
     \end{minipage}
+    \vspace{0.5cm}
 
-    
+      Cabe destacar que tanto la ganancia de tensión como la de corriente aparecen con signo positivo. Esto difiere del 
+      cálculo analítico, donde el análisis muestra la inversión de fase y por eso aparece el signo negativo. La razón 
+      es que en la práctica no se está considerando un instante puntual de la señal, sino sus valores pico; por lo 
+      tanto, no se puede reflejar si la fase está invertida o no.
+
     \subsection{Impedancia de salida}
     Para la medicion de la impedancia de salida, se pone el generador a la salida y el mismo se configura para que con
-    una resistencia sensora, haya $!V_{PP}$ a la salida como se muestra en el siguiente grafico
+    una resistencia sensora, haya $V_{PP}$ a la salida como se muestra en el siguiente grafico
 
     \begin{tikzpicture}
     	% Paths, nodes and wires:
@@ -174,4 +205,29 @@
     Z_o = \boxed{1176.47\,\Omega}
     \]
 
+    \begin{table}[t]
+    \centering
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabularx}{\textwidth}{l *{3}{>{\centering\arraybackslash}X}}
+    \toprule
+    \textbf{Magnitud} & \textbf{Calculado} & \textbf{Simulado} & \textbf{Medido} \\
+    \midrule
+    \multicolumn{4}{l}{\textbf{Punto Q (CC)}}\\
+    $I_{CQ}$  &  &  &  \\
+    $V_{CEQ}$ &  &  &  \\
+    $I_{R1}$  &  &  &  \\
+    $I_{R2}$  &  &  &  \\
+    $I_{BQ}$  &  &  &  \\
+    \addlinespace[2pt]
+    \multicolumn{4}{l}{\textbf{Pequeña señal @ 1 kHz}}\\
+    $Z_i$   &  &  &  \\
+    $Z_o$   &  &  &  \\
+    $A_i$   &  &  &  \\
+    $A_v$   &  &  &  \\
+    \bottomrule
+    \end{tabularx}
+    \caption{Comparativa de valores calculados, simulados y medidos.}
+    \end{table}
+
+    
 
