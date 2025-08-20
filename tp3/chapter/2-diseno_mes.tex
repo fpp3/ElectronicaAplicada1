@@ -369,18 +369,25 @@ observar si la intersección de las mismas se da en el punto $Q_{MES}$ recién c
           xtick={0,2,...,12},
           ytick={0,2,...,14},
       ]
-        % Recta de CC: pasa por (0,8.695) y (12,0)
+        % Recta de CC:
         \addplot[red, thick] coordinates {(0,8.695) (12,0)};
         \addlegendentry{Recta CC}
-        % Recta de CA: pasa por (0,12.94) y (7.05,0)
-        \addplot[blue, thick] coordinates {(0,12.94) (7.05,0)};
+        % Recta de CA:
+        \addplot[blue, thick] coordinates {(0,12.46) (6.8,0)};
         \addlegendentry{Recta CA}
         % Punto Q
-        \addplot[only marks, mark=*] coordinates {(3.82,5.92)};
-        \node[above right] at (axis cs:3.82,5.92) {Q};
+        \addplot[only marks, mark=*] coordinates {(3.39,6.23)};
+        \node[above right] at (axis cs:3.39,6.23) {\emph{Q (3.39;6.23)}};
+
+        % Líneas punteadas desde Q a los ejes
+        \draw[dashed] (axis cs:3.39,6.23) -- (axis cs:3.39,0)
+          node[below] {$3.39$};
+        \draw[dashed] (axis cs:3.39,6.23) -- (axis cs:0,6.23)
+          node[left] {$6.23$};
       \end{axis}
     \end{tikzpicture}
   \end{minipage}
+  \caption{intersección de las rectas de carga en el punto Q calculado.}
 \end{figure}
 
 \section{Simulación}
