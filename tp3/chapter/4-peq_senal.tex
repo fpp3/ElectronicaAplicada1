@@ -37,19 +37,19 @@
       \noindent
       \begin{minipage}[t]{0.45\linewidth}
       \begin{align*}
-      Z_i &= \frac{R_B \cdot h_{ie}}{R_B + h_{ie}} \\
-          &= \frac{\RB \cdot \HIE}{\RB + \HIE} \\
+      Z_i &= \frac{R_B \cdot h_{ie}}{R_B + h_{ie}} \\[6pt]
+          &= \frac{\RB \cdot \HIE}{\RB + \HIE} \\[6pt]
           &= \boxed{1525.38\,\Omega} \\[16pt]
       Z_o &\simeq R_C = \boxed{1.2\,\text{k}\Omega}
       \end{align*}
       \end{minipage}\hfill
       \begin{minipage}[t]{0.45\linewidth}
       \begin{align*}
-      A_i &= -h_{fe}\cdot \frac{R_C}{R_C+R_L}\cdot \frac{R_B}{R_B+h_{ie}} \\
-          &= -\hfe \cdot \frac{\RC}{\RC+\RL}\cdot \frac{\RB}{\RB+\HIE} \\
+      A_i &= -h_{fe}\cdot \frac{R_C}{R_C+R_L}\cdot \frac{R_B}{R_B+h_{ie}} \\[6pt]
+          &= -\hfe \cdot \frac{\RC}{\RC+\RL}\cdot \frac{\RB}{\RB+\HIE} \\[6pt]
           &= \boxed{-216.33} \\[16pt]
-      A_v &= A_i \cdot \frac{R_L}{Z_i} \\
-          &= (-216.33)\cdot \frac{\RL}{1525.38\,\Omega} \\
+      A_v &= A_i \cdot \frac{R_L}{Z_i} \\[6pt]
+          &= (-216.33)\cdot \frac{\RL}{1525.38\,\Omega} \\[6pt]
           &= \boxed{-141.82}
       \end{align*}
       \end{minipage}    
@@ -82,16 +82,16 @@
         }
         \caption*{Esquema de medición}
       \end{minipage}
-      \caption{Esquemático de medicion experimenta y experiencia en laboratorio.}
+      \caption{Esquemático de medición experimenta y experiencia en laboratorio.}
       \label{fig:foto-tikz-inline}
     \end{figure}
 
-    Para la medicion de pequeña senañ de forma experimental, se suelda una resistencia de $2\text{K}2\Omega$ a la entrada
-    del circuito, la cual va a ser utilizada como Resistencia sensora. tambien se sueldan los correspondientes capacitores
+    Para la medición de pequeña señal de forma experimental, se suelda una resistencia de $2\text{K}2\Omega$ a la entrada
+    del circuito, la cual va a ser utilizada como Resistencia sensora. también se sueldan los correspondientes capacitores
     de acople y desacople.
 
-    Luego se procede a ajustar la tension de entrada de tal forma que a la salida se obtenga una onda senoidal con una
-    tension de $V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el grafico de
+    Luego se procede a ajustar la tensión de entrada de tal forma que a la salida se obtenga una onda senoidal con una
+    tensión de $V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el gráfico de
     arriba.
 
     \begin{figure}[!htbp]
@@ -99,17 +99,17 @@
       \begin{minipage}[t]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{pictures/osc_vi_0.5ms-20mv-sondax10-oscx5.jpg}
-        \caption*{\small $V_i$ con escalas: 0.5ms/div-20mv/div-Sonda X10-Osc X5.}
+        \caption*{\small $V_i$ con escalas: 0.5ms/div, 20mv/div-Sonda X10-Osc X5.}
       \end{minipage}\hfill
       \begin{minipage}[t]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{pictures/osc_vS_0.5ms-20mv-sondax10-oscx5.jpg}
-        \caption*{\small $V_S$ con escalas: 0.5ms/div-20mv/div-Sonda X10-Osc X5.}
+        \caption*{\small $V_S$ con escalas: 0.5ms/div-10mv/div-Sonda X10-Osc X5.}
       \end{minipage}\hfill
       \begin{minipage}[t]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{pictures/osc_vl_0.2ms-0.2v.jpg}
-        \caption*{\small $V_L$ con escalas 0.10ms/div-200mv/div.}
+        \caption*{\small $V_L$ con escalas 0.20ms/div-200mv/div.}
       \end{minipage}
       \caption{Mediciones en R sensora, entrada y salida.}
     \end{figure}
@@ -170,9 +170,10 @@
       tanto, no se puede reflejar si la fase está invertida o no.
 
     \subsection{Impedancia de salida}
-    Para la medicion de la impedancia de salida, se pone el generador a la salida y el mismo se configura para que con
-    una resistencia sensora, haya $V_{PP}$ a la salida como se muestra en el siguiente grafico
-
+    Para la medición de la impedancia de salida, se pone el generador a la salida y el mismo se configura para que con
+    una resistencia sensora, haya $V_{PP}$ a la salida como se muestra en el siguiente gráfico
+    \begin{figure}[H]
+      \centering
     \begin{tikzpicture}
     	% Paths, nodes and wires:
     	\node[shape=rectangle, draw, line width=1pt, minimum width=3.215cm, minimum height=4.965cm](N1) at (13.625, 4.5){} node[anchor=center] at (N1.text){$CIRCUITO$};
@@ -186,6 +187,7 @@
     	\draw (16, 8) -- (16, 6);
     	\draw (20, 8) -- (20, 6);
     \end{tikzpicture}
+    \end{figure}
 
     \vspace{0.5cm}
 

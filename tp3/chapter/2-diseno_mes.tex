@@ -153,7 +153,7 @@ Thévenin a la red de entrada del circuito \ref{fig:amplificador}, obteniendo el
         \centering
         Donde $R_{B}$ es la resistencia equivalente y $V_{BB}$ es la tensión de Thévenin:
         \begin{align}
-            R_{B} &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \label{ec:thevenin-rb}\\
+            R_{B} &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \label{ec:thevenin-rb}\\[6pt]
             V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \label{ec:thevenin-vbb}
         \end{align}
         Se debe determinar los valores de $R_B$ y $V_{BB}$ con el objetivo de polarizar
@@ -164,8 +164,8 @@ Thévenin a la red de entrada del circuito \ref{fig:amplificador}, obteniendo el
 Aplicando LKV a la malla de entrada:
 
 \begin{align}
-    V_{BB} - I_{BQ} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \nonumber \\
-    V_{BB} - \frac{I_{CQ}}{\beta} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \nonumber \\
+    V_{BB} - I_{BQ} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \nonumber \\[6pt]
+    V_{BB} - \frac{I_{CQ}}{\beta} R_B - V_{BEQ} - I_{CQ} R_E &= 0 \nonumber \\[6pt]
     I_{CQ} &= \frac{V_{BB} - V_{BEQ}}{R_E + \frac{R_B}{\beta}} \label{eq:icq}
 \end{align}
 
@@ -221,8 +221,8 @@ circuito abierto) y para CA (reemplazando a los capacitores por corto circuitos)
         \centering
         LKV:
         \begin{align}
-            V_{CC} &= I_{CQ} R_C + V_{CEQ} + I_{CQ} R_E \nonumber \\
-            V_{CC} &= V_{CEQ} + I_{CQ}(R_C + R_E) \nonumber \\ 
+            V_{CC} &= I_{CQ} R_C + V_{CEQ} + I_{CQ} R_E \nonumber \\[6pt]
+            V_{CC} &= V_{CEQ} + I_{CQ}(R_C + R_E) \nonumber \\[6pt] 
             V_{CC} &= V_{CEQ} + I_{CQ}(R_{CC}) \label{ec:malla-salida-cc}
         \end{align}
         Esta última ecuación corresponde a la recta de carga para \emph{CC}.
@@ -266,8 +266,8 @@ circuito abierto) y para CA (reemplazando a los capacitores por corto circuitos)
     \centering
     LKV:
     \begin{align}
-        \hat{v}_{ce} &= \hat{\imath}_c(R_C ||R_L) \nonumber \\
-        \hat{v}_{ce} &= \hat{\imath}_c\frac{R_C R_L}{R_C + R_L} \nonumber \\
+        \hat{v}_{ce} &= \hat{\imath}_c(R_C ||R_L) \nonumber \\[6pt]
+        \hat{v}_{ce} &= \hat{\imath}_c\frac{R_C R_L}{R_C + R_L} \nonumber \\[6pt]
         \hat{v}_{ce} &= \hat{\imath}_c(R_{CA}) \label{ec:malla-salida-ca}
     \end{align}
   \end{minipage}
@@ -275,7 +275,7 @@ circuito abierto) y para CA (reemplazando a los capacitores por corto circuitos)
 
 Por definición de MES, se tiene que la amplitud pico de la señal de salida es:
 \begin{align*}
-    \hat{v}_{ce} &= V_{CEQ}\\
+    \hat{v}_{ce} &= V_{CEQ}\\[6pt]
     \hat{\imath}_c &= I_{CEQ}
 \end{align*}
 
@@ -288,16 +288,16 @@ Reemplazando esto en la ecuación \ref{ec:malla-salida-ca}:
 Y reemplazando esta última igualdad en la ecuación \ref{ec:malla-salida-cc}:
 
 \begin{align}
-    V_{CC} &= I_{CQ_{MES}}(R_{CA}) + I_{CQ_{MES}}(R_{CC}) \nonumber\\
+    V_{CC} &= I_{CQ_{MES}}(R_{CA}) + I_{CQ_{MES}}(R_{CC}) \nonumber\\[6pt]
     I_{CQ_{MES}} &= \frac{V_{CC}}{R_{CA} + R_{CC}} \label{ec:icqmes2}
 \end{align}
 
 Igualando esta última ecuación con la ecuación \ref{ec:icqmes1} y despejando $V_{BB}$:
 
 \begin{align}
-   \frac{V_{BB} - V_{BEQ}} {R_E + \frac{R_E}{10}} &= \frac{V_{CC}}{R_{CA}+R_{CC}} \nonumber\\
-   (V_{BB} - V_{BEQ})(R_{CA}+R_{CC}) &= V_{CC}(R_E +\frac{R_E}{10})\nonumber\\
-   V_{BB}(R_{CA}+R_{CC}) &= V_{CC}(R_E +\frac{R_E}{10}) \nonumber\\
+   \frac{V_{BB} - V_{BEQ}} {R_E + \frac{R_E}{10}} &= \frac{V_{CC}}{R_{CA}+R_{CC}} \nonumber\\[6pt]
+   (V_{BB} - V_{BEQ})(R_{CA}+R_{CC}) &= V_{CC}(R_E +\frac{R_E}{10})\nonumber\\[6pt]
+   V_{BB}(R_{CA}+R_{CC}) &= V_{CC}(R_E +\frac{R_E}{10}) \nonumber\\[6pt]
    V_{BB} &= \boxed{\frac{V_{CC}(R_E +\frac{R_E}{10}) + V_{BEQ}(R_{CA}+R_{CC})}{R_{CA}+R_{CC}}} \label{ec:calculo-vbb}
 \end{align}
 
@@ -306,8 +306,8 @@ amplificador, y la ecuación \ref{ec:criterio-diseño},
 resultante de establecer un criterio de diseño:
 
 \begin{align*}
-    R_B &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \tag{\ref{ec:thevenin-rb}}\\
-    V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \tag{\ref{ec:thevenin-vbb}}\\
+    R_B &= R_1||R_2=\frac{R_1 R_2}{R_1 + R_2} \tag{\ref{ec:thevenin-rb}}\\[6pt]
+    V_{BB} &= V_{CC} \cdot \frac{R_1}{R_1 + R_2} \tag{\ref{ec:thevenin-vbb}}\\[6pt]
     R_B &= \boxed{\beta \frac{R_E}{10}} \tag{\ref{ec:criterio-diseño}}
 \end{align*}
 
@@ -333,11 +333,11 @@ a realizar los cálculos pertinentes para determinar los valores de $R_1$ y $R_2
 para polarizar nuestro transistor para MES:
 
 \begin{align*}
-    R_B &= \beta \frac{R_E}{10} = 484\frac{180}{10} = \boxed{8712\Omega}\\ \\
-    V_{BB} &= \frac{V_{CC}(R_E +\frac{R_E}{10}) + V_{BEQ}(R_{CA}+R_{CC})}{R_{CA}+R_{CC}} = \\
-    &= \frac{12 \cdot 180(1+0.1) + 0.7[(\frac{1200\cdot1000}{1200+1000})+(1200+180)]}{(\frac{1200\cdot1000}{1200+1000})+(1200+180)} = \\
-    &= \boxed{1.933V}\\ \\
-    R_1 &= \frac{R_B}{1-\frac{V_{BB}}{V_{CC}}} = \frac{8712}{1-\frac{1.933}{12}} = \boxed{10384\Omega}\\ \\
+    R_B &= \beta \frac{R_E}{10} = 484\frac{180}{10} = \boxed{8712\Omega}\\[6pt]
+    V_{BB} &= \frac{V_{CC}(R_E +\frac{R_E}{10}) + V_{BEQ}(R_{CA}+R_{CC})}{R_{CA}+R_{CC}} = \\[6pt]
+    &= \frac{12 \cdot 180(1+0.1) + 0.7[(\frac{1200\cdot1000}{1200+1000})+(1200+180)]}{(\frac{1200\cdot1000}{1200+1000})+(1200+180)} = \\[6pt]
+    &= \boxed{1.933V}\\[6pt]
+    R_1 &= \frac{R_B}{1-\frac{V_{BB}}{V_{CC}}} = \frac{8712}{1-\frac{1.933}{12}} = \boxed{10384\Omega}\\[6pt]
     R_2 &= \frac{V_{CC}R_B}{V_{BB}} = \frac{12\cdot8712}{1.933} = \boxed{54083\Omega}
 \end{align*}
 
@@ -346,7 +346,7 @@ determinado por las ecuaciones \ref{ec:icqmes2} y \ref{ec:malla-salida-cc} (desp
 para $V_{CE}$):
 
 \begin{align*}
-    I_{CQ_{MES}} &= \frac{V_{CC}}{R_{CA} + R_{CC}} = \frac{12}{545.45+1380} = \boxed{6.23mA}\\
+    I_{CQ_{MES}} &= \frac{V_{CC}}{R_{CA} + R_{CC}} = \frac{12}{545.45+1380} = \boxed{6.23mA}\\[6pt]
     V_{CEQ_{MES}} &= V_{CC} - I_{CQ_{MES}}(R_{CC}) = 12-6.23\times10^{-3} \cdot 1380 = \boxed{3.399V}
 \end{align*}
 
@@ -418,11 +418,11 @@ $I_{CQ_{MES}}$ y $V_{CEQ_{MES}}$ obtenidos analíticamente y los obtenidos en la
 Sin embargo, los valores de simulación están dentro de un rango de tolerancia de $\pm10\%$
 como se puede observar:
 
-Análiticamente se obutuvo $I_{CQ_{MES}} = 6.26mA$, mientras que en la simulación se obtuvo un valor de $I_C = 6.457mA$.
+Analíticamente se obtuvo $I_{CQ_{MES}} = 6.26mA$, mientras que en la simulación se obtuvo un valor de $I_C = 6.457mA$.
 Como se admite una tolerancia de $\pm 10\%$:
 
 \begin{align*}
-I_{C,\text{max}} &= 6.26mA + 0.10 \cdot 6.26mA = 6.85mA \\
+I_{C,\text{max}} &= 6.26mA + 0.10 \cdot 6.26mA = 6.85mA \\[6pt]
 I_{C,\text{min}} &= 6.26mA - 0.10 \cdot 6.26mA = 5.61mA
 \end{align*}
 
@@ -441,7 +441,7 @@ obtenidos mediante simulación son correctos.
 
 El mismo criterio se puede seguir con la tensión colector-emisor, cuyo valor calculado analíticamente es
 $V_{CEQ_{MES}} = 3.399V$, mientras que en la simulación se obtuvo un valor de $V_{CE} = 3.086V$, lo que se
-encuentra dentro del $\pm 10\%$ de márgen:
+encuentra dentro del $\pm 10\%$ de margen:
 
 \[
 3.059V \leq 3.086V \leq 3.7389V
