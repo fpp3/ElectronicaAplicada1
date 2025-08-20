@@ -94,15 +94,26 @@
     tension de $V_{pp}$ y se realizan las mediciones tanto de $V_s$ como de $V_i$ como se indica en el grafico de
     arriba.
 
-    \begin{table}[h]
-    \centering
-    \begin{tabularx}{\textwidth}{@{}X X@{}}
-    \includegraphics[width=\linewidth]{pictures/osc_vi_0.2ms-0.2v.jpg} &
-    \includegraphics[width=\linewidth]{pictures/osc_vl_0.5ms-20mv-sondax10-oscx5.jpg} \\
-    \centering\small Señal en Rs & \centering\small Señal de salida
-  \end{tabularx}
-    \caption{Mediciones en la entrada y salida del amplificador}
-    \end{table}
+    \begin{figure}[!htbp]
+      \centering
+      \begin{minipage}[t]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pictures/osc_vi_0.5ms-20mv-sondax10-oscx5.jpg}
+        \caption*{\small $V_i$ con escalas: 0.5ms/div-20mv/div-Sonda X10-Osc X5.}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pictures/osc_vS_0.5ms-20mv-sondax10-oscx5.jpg}
+        \caption*{\small $V_S$ con escalas: 0.5ms/div-20mv/div-Sonda X10-Osc X5.}
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pictures/osc_vl_0.2ms-0.2v.jpg}
+        \caption*{\small $V_L$ con escalas 0.10ms/div-200mv/div.}
+      \end{minipage}
+      \caption{Mediciones en R sensora, entrada y salida.}
+    \end{figure}
+    
 
     \vspace{0.5cm}
     A partir de las mediciones se tiene:
@@ -205,29 +216,7 @@
     Z_o = \boxed{1176.47\,\Omega}
     \]
 
-    \begin{table}[t]
-    \centering
-    \renewcommand{\arraystretch}{1.15}
-    \begin{tabularx}{\textwidth}{l *{3}{>{\centering\arraybackslash}X}}
-    \toprule
-    \textbf{Magnitud} & \textbf{Calculado} & \textbf{Simulado} & \textbf{Medido} \\
-    \midrule
-    \multicolumn{4}{l}{\textbf{Punto Q (CC)}}\\
-    $I_{CQ}$  &  &  &  \\
-    $V_{CEQ}$ &  &  &  \\
-    $I_{R1}$  &  &  &  \\
-    $I_{R2}$  &  &  &  \\
-    $I_{BQ}$  &  &  &  \\
-    \addlinespace[2pt]
-    \multicolumn{4}{l}{\textbf{Pequeña señal @ 1 kHz}}\\
-    $Z_i$   &  &  &  \\
-    $Z_o$   &  &  &  \\
-    $A_i$   &  &  &  \\
-    $A_v$   &  &  &  \\
-    \bottomrule
-    \end{tabularx}
-    \caption{Comparativa de valores calculados, simulados y medidos.}
-    \end{table}
+   
 
     
 
