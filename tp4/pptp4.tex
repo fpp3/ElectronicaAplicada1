@@ -2,26 +2,33 @@
 
 \usetheme{Madrid} % Tema visual (hay varios)
 
-\title{Mi Presentación en LaTeX}
-\author{Gaston Grasso}
-\date{\today}
+\title{BJT: Configuracion Base Comun}
+\subtitle{Trabajo Practico N°4}
+\author[Grasso, Palombo, Prieto]{
+                                  Gaston Grasso - 401892\\
+                                  Franco Palombo - 401910\\
+                                  Angelo Prieto - 401012}
+\institute[UTN - FRC]{Universidad Tecnologica Nacional, Facultad Regional Cordoba}
+\date[2025]{03/09/2025}
+\logo{\includegraphics[width=.05\textwidth]{images/UTN_logo.png}}
+
+\AtBeginSection[]
+{
+  \begin{frame}{Tabla de Contenidos}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 
 \frame{\titlepage}
-
-\begin{frame}{Introducción}
-  \begin{itemize}
-    \item Punto 1
-    \item Punto 2
-    \item Punto 3
-  \end{itemize}
+\begin{frame}{Tabla de Contenidos}
+\tableofcontents
 \end{frame}
-
-\begin{frame}{Ecuación}
-  \[
-    E = mc^2
-  \]
-\end{frame}
+\input{frames/1-introduccion.tex}
+\input{frames/2-teorico.tex}
+\input{frames/3-diseno.tex}
+\input{frames/4-implementacion.tex}
+\input{frames/5-desafios.tex}
 
 \end{document}
