@@ -28,7 +28,7 @@
       \draw (0, -3.5) |- (-0, -0.84);
     \end{tikzpicture}
     }
-    Segun (Ec. \ref{eq:r1}) y (Ec. \ref{eq:r2}) tenemos que:
+    Según (Ec. \ref{eq:r1}) y (Ec. \ref{eq:r2}) tenemos que:
     \begin{equation*}
       R_1 = \frac{R_B}{1 - \frac{V_{BB}}{V_{CC}}} \quad R_2 = \frac{V_{CC} R_B}{V_{BB}}
     \end{equation*}
@@ -62,14 +62,14 @@
       \node[ocirc](N4) at (6, -0){} node[anchor=west] at (N4.text){$V_o$};
     \end{tikzpicture}
     }
-    Segun (Ec. \ref{ec:thevenin-rb}) y (Ec. \ref{ec:thevenin-vbb}) tenemos que:
+    Según (Ec. \ref{ec:thevenin-rb}) y (Ec. \ref{ec:thevenin-vbb}) tenemos que:
     \begin{equation*}
       R_B = \frac{R_1 R_2}{R_1 + R_2} \quad V_{BB} = \frac{V_{CC} R_1}{R_1 + R_2}
     \end{equation*}
   \end{minipage}
 \end{frame}
 \subsection{Punto Q}
-\begin{frame}[allowframebreaks]{Polarizacion en CC}
+\begin{frame}[allowframebreaks]{Polarización en CC}
   \begin{minipage}{0.3\textwidth}
     \resizebox{\textwidth}{!}{
     \begin{tikzpicture}
@@ -174,7 +174,7 @@
       \end{align*}
     \end{minipage}
   \end{figure}
-  Los cortes en los ejes estan dados por:
+  Los cortes en los ejes están dados por:
   \begin{figure}[!ht]
     \begin{minipage}{0.45\textwidth}
       Para CC:
@@ -230,24 +230,24 @@
         i_C = 4.125mA \to v_{CBQ} = 4.525V
       \end{gather*}
     \end{minipage}
-    \caption{rectas de carga y punto Q extraido de las intersecciones de las rectas.}
+    \caption{rectas de carga y punto Q extraído de las intersecciones de las rectas.}
   \end{figure}
 
 \end{frame}
 
-\begin{frame}{Simulacion}
+\begin{frame}{Simulación}
   \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{images/sim_calculada.png}
-    \caption{simulacion en LTSpice de punto de operacion (OP).}
+    \caption{simulación en LTSpice de punto de operación (OP).}
   \end{figure}
   \begin{equation*}
     4.07V \leq v_{CBQ} \leq 4.98V \quad \quad 3.7mA \leq i_{CQ} \leq 4.53mA
   \end{equation*}
 \end{frame}
 
-\subsection{Normalizacion}
-\begin{frame}[allowframebreaks]{Normalizacion de Resistores}
+\subsection{Normalización}
+\begin{frame}[allowframebreaks]{Normalización de Resistores}
   Los valores comerciales mas cercanos a los valores calculados de $R_1$ y $R_2$ son:
   \begin{block}{Valores Normalizados}
     \begin{equation*}
@@ -294,7 +294,7 @@
     \end{minipage}
   \end{figure}
 
-  Los valores de polarizacion calculados con las resistencias normalizadas estan perfectamente dentro del 10\% de margen
+  Los valores de polarización calculados con las resistencias normalizadas están perfectamente dentro del 10\% de margen
   permitido.
   \begin{block}{Margenes}
     \begin{equation*}
@@ -304,8 +304,8 @@
 
   \begin{figure}[!ht]
     \raggedright
-    Para corroborar mas adelante en la implementacion, se calcularon tambien las corrientes en las resistencias con sus
-    caidas de tension:\\
+    Para corroborar mas adelante en la implementación, se calcularon también las corrientes en las resistencias con sus
+    caídas de tensión:\\
     \centering
     \small
     \begin{minipage}{0.45\textwidth}
@@ -361,13 +361,13 @@
         i_C = 4.15mA \to v_{CBQ} = 4.525V
       \end{gather*}
     \end{minipage}
-    \caption{rectas de carga y punto Q extraido de las intersecciones de las rectas con resistencias normalizadas.}
+    \caption{rectas de carga y punto Q extraído de las intersecciones de las rectas con resistencias normalizadas.}
   \end{figure}
 
   \begin{figure}[!ht]
     \centering
     \includegraphics[width=.9\textwidth]{images/sim_normalizada.png}
-    \caption{simulacion en LTSpice de punto de operacion (OP) con resistencias normalizadas.}
+    \caption{simulación en LTSpice de punto de operación (OP) con resistencias normalizadas.}
   \end{figure}
   \begin{equation*}
     4.07V \leq v_{CBQ} \leq 4.98V \quad \quad 3.7mA \leq i_{CQ} \leq 4.53mA
@@ -375,25 +375,93 @@
 \end{frame}
 
 \subsection{Pequeña señal}
-\begin{frame}{Analisis de pequeña señal}
+\begin{frame}[allowframebreaks]{Análisis de pequeña señal}
   \begin{figure}[ht!]
+    \begin{minipage}[][\textheight][]{\textwidth}
+      \centering
+      \resizebox{\textwidth}{!}{
+      \begin{tikzpicture}
+        % Paths, nodes and wires:
+        \draw (3.5, 1.25) to[american resistor, l_={$R_C$}] (3.5, -1.5);
+        \draw (-3.5, -1.5) to[american resistor, l={$R_E$}] (-3.5, 1.25);
+        \draw (5.5, 1.25) to[american resistor, l_={$R_L$}] (5.5, -1.5);
+        \draw (-5.5, 1.25) to[sinusoidal voltage source, l_={$v_i$}] (-5.5, -1.5);
+        \draw (-1.5, -1.5) to[american resistor, l={$h_{ib}$}] (-1.5, 1.25);
+        \draw (1.5, 1.25) to[american current source, mirror, l_={$h_{fb} \cdot i_e$}] (1.5, -1.5);
+        \draw (-5.5, -1.5) -- (7, -1.5);
+        \node[ocirc] at (7, 1.25){};
+        \node[ocirc] at (7, -1.5){};
+        \draw (-5.5, 1.25) -- (-1.5, 1.25);
+        \draw (1.5, 1.25) -- (7, 1.25);
+        \node[shape=rectangle, draw, line width=0.5pt, dash pattern={on 2pt off 2pt}, minimum width=4.982cm, minimum height=4.482cm] at (-0, 0){};
+        \node[ground] at (0, -1.5){};
+        \draw[-latex] (-1.25, 0.75) |- (-1.75, 1.5);
+        \draw[-latex] (-5.75, 0.75) -| (-5.75, 1.5) -- (-5.25, 1.5);
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (7, -0.25){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (6.625, 0.125){$v_o$};
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (-5.5, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (-5.875, 2.25){$i_i$};
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (-1.5, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (-1.875, 2.25){$i_e$};
+        \draw[-latex] (-4.5, -2) -| (-4.5, -0.5) -- (-4, -0.5);
+        \draw[-latex] (4.5, -2) |- (4, -0.5);
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (-4.5, -2.375){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (-4.875, -2){$Z_i$};
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (4.5, -2.375){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (4.125, -2){$Z_o$};
+        \draw[-latex] (5.25, 1.5) -| (5.75, 0.75);
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (5.5, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (5.125, 2.25){$i_l$};
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (1.5, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (1.125, 2.25){$i_c$};
+        \draw[-latex] (1.75, 1.5) -| (1.25, 1.5) -- (1.25, 0.75);
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (7, 0.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (6.625, 1.25){$+$};
+        \node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (7, -1.125){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (6.625, -0.75){$-$};
+      \end{tikzpicture}
+      }
+      \caption{circuito equivalente para CA.}
+    \end{minipage}
+  \end{figure}
+
+  \begin{figure}[!ht]
+    \raggedright
+    Podemos calcular las impedancias del amplificador:\\
     \centering
-    \resizebox{\textwidth}{!}{
-        \begin{tikzpicture}
-          % Paths, nodes and wires:
-          \draw (3.25, 1.5) to[american resistor, l={$R_C$}] (3.25, -1.25);
-          \draw (-3.75, -1.25) to[american resistor, l={$R_E$}] (-3.75, 1.5);
-          \draw (5.25, 1.5) to[american resistor, l={$R_L$}] (5.25, -1.25);
-          \draw (-6.23, 1.5) to[sinusoidal voltage source, l={$v_i$}] (-6.25, -1.25);
-          \draw (-1.75, -1.25) to[american resistor, l={$h_{ib}$}] (-1.75, 1.5);
-          \draw (1.25, -1.25) to[american current source, l={$h_{fb} \cdot i_e$}] (1.25, 1.5);
-          \draw (-6.25, -1.25) -- (6.75, -1.25);
-          \node[ocirc] at (6.75, 1.5){};
-          \node[ocirc] at (6.75, -1.25){};
-          \draw (-6.23, 1.5) -| (-1.75, 1.5);
-          \draw (1.25, 1.5) -- (6.75, 1.5);
-        \end{tikzpicture}
-    }
-    \caption{circuito equivalente para CA.}
-\end{figure}
+    \begin{minipage}[][\textheight][t]{0.45\textwidth}
+      Usando REF ZI HIB:
+      \begin{align*}
+        h_{ib} &= \frac{25mV}{I_{CQ}}\\[6pt]
+        Z_i &= R_E // h_{ib}\\[6pt]
+        Z_i &= \frac{220\Omega \cdot \frac{25mV}{4.142mA}}{220\Omega + \frac{25mV}{4.142mA}}\\[6pt]
+        Z_i &= 5.87\Omega
+      \end{align*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[][\textheight][t]{0.45\textwidth}
+      Usando REF ZO:
+      \begin{align*}
+        Z_o &\approx R_C\\[6pt]
+        Z_o &\approx 2K2\Omega
+      \end{align*}
+    \end{minipage}
+  \end{figure}
+
+  \begin{figure}[!ht]
+    \raggedright
+    Podemos calcular las ganancias del amplificador:\\
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+      Usando REF AI:
+      \small
+      \begin{align*}
+        A_i &= \frac{R_C}{R_C + R_L} \cdot \frac{R_E}{R_E + h_{ib}}\\[6pt]
+        A_i &= \frac{2K2\Omega}{2K2\Omega + 2K2\Omega} \cdot \frac{220\Omega}{220\Omega + \frac{25mV}{4.142mA}}\\[6pt]
+        A_i &= 0.486
+      \end{align*}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+      Usando REF AV:
+      \small
+      \begin{align*}
+        A_v &= \frac{R_C // R_L}{h_{ib}}\\[6pt]
+        A_v &= \frac{\frac{2K2\Omega \cdot 2K2\Omega}{2K2\Omega + 2K2\Omega}}{\frac{25mV}{4.142mA}}\\[6pt]
+        A_v &= 182.248
+      \end{align*}
+    \end{minipage}
+  \end{figure}
+
 \end{frame}
