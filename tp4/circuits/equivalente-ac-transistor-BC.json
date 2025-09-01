@@ -1,0 +1,378 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 127.559,
+                    "y": -47.244
+                },
+                {
+                    "x": 127.559,
+                    "y": 56.693
+                }
+            ],
+            "label": {
+                "value": "\\frac{1}{h_{ob}}",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -174.804,
+                    "y": -47.244
+                },
+                {
+                    "x": -108.662,
+                    "y": -47.244
+                }
+            ],
+            "label": {
+                "value": "h_{ib}",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 56.693,
+                    "y": -47.244
+                },
+                {
+                    "x": 56.693,
+                    "y": 56.693
+                }
+            ],
+            "label": {
+                "value": "h_{fb} \\cdot i_e",
+                "otherSide": true,
+                "distance": "0.12cm"
+            },
+            "id": "american current source",
+            "scale": {
+                "x": 1,
+                "y": -1
+            }
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -56.693,
+                    "y": -47.244
+                },
+                {
+                    "x": -56.693,
+                    "y": 56.693
+                }
+            ],
+            "label": {
+                "value": "h_{rb} \\cdot v_{eb}",
+                "otherSide": true,
+                "distance": "0.12cm"
+            },
+            "id": "american voltage source"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -108.662,
+                    "y": -47.244
+                },
+                {
+                    "x": -56.693,
+                    "y": -47.244
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 56.693,
+                    "y": -47.244
+                },
+                {
+                    "x": 198.425,
+                    "y": -47.244
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -174.804,
+                    "y": -47.244
+                },
+                {
+                    "x": -198.425,
+                    "y": -47.244
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 193.701,
+                    "y": 56.693
+                },
+                {
+                    "x": -198.425,
+                    "y": 56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "size": {
+                "x": 349.606,
+                "y": 170.079
+            }
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 0,
+                "y": 56.693
+            },
+            "id": "ground"
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": 0,
+                "y": 47.244
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.347,
+                "y": 28.346
+            },
+            "text": {
+                "text": "B",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": 211.417,
+                "y": -47.244
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 25.984,
+                "y": 23.622
+            },
+            "text": {
+                "text": "C",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": -210.236,
+                "y": -47.244
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 23.622,
+                "y": 23.622
+            },
+            "text": {
+                "text": "E",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 198.425,
+                "y": -47.244
+            },
+            "id": "ocirc"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 193.701,
+                "y": 56.693
+            },
+            "id": "ocirc"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": -198.425,
+                "y": -47.244
+            },
+            "id": "ocirc"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": -198.425,
+                "y": 56.693
+            },
+            "id": "ocirc"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 207.874,
+                    "y": -56.693
+                },
+                {
+                    "x": 179.527,
+                    "y": -56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "--"
+            ],
+            "endArrow": "latex"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -47.244,
+                    "y": -37.795
+                },
+                {
+                    "x": -66.142,
+                    "y": -56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "|-"
+            ],
+            "endArrow": "latex"
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": -56.693,
+                "y": -70.866
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 28.346
+            },
+            "text": {
+                "text": "$i_e$",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": 198.425,
+                "y": -70.866
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 28.346
+            },
+            "text": {
+                "text": "$i_c$",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": -198.425,
+                "y": -70.866
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 28.346
+            },
+            "text": {
+                "text": "$-i_e$",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -207.874,
+                    "y": -56.693
+                },
+                {
+                    "x": -179.528,
+                    "y": -56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "--"
+            ],
+            "endArrow": "latex"
+        }
+    ]
+}

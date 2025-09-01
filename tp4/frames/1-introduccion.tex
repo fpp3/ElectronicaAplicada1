@@ -1,5 +1,38 @@
 \section{Introducción}
 \begin{frame}{Introducción}
 
+\begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tikzpicture}
+    	% Paths, nodes and wires:
+    	\node[npn, rotate=90, yscale=-1] at (-0.02, 2.75){};
+    	\draw (2.98, 2.75) to[american resistor, l={$R_C$}] (2.98, 0);
+    	\draw (-3.02, 0) to[american resistor, l={$R_1$}] (-0.02, 0);
+    	\draw (-3.02, 0) to[american resistor, l={$R_E$}] (-3.02, 2.75);
+    	\draw (-0.02, 0) to[american resistor, l={$R_2$}] (2.98, 0);
+    	\draw (-0.02, 1.91) -- (-0.02, 0);
+    	\draw (-3.02, 2.75) -- (-0.79, 2.75);
+    	\draw (0.75, 2.75) -- (2.98, 2.75);
+    	\draw (-3.02, 2.75) to[capacitor, l={$C_1$}] (-6.02, 2.75);
+    	\draw (5.98, 2.75) to[capacitor, l={$C_C$}] (2.98, 2.75);
+    	\draw (5.98, 1.75) to[american resistor, l={$R_L$}] (5.98, -1);
+    	\draw (-6.02, 2) to[sinusoidal voltage source, l={$v_i$}] (-6.02, -1);
+    	\draw (-0.02, -1.75) to[capacitor, l={$C_2$}] (-0.02, 0);
+    	\draw (-3.02, 0) -- (-3.02, -1.75);
+    	\draw (-6.02, 2.75) -- (-6.02, 2);
+    	\draw (-6.02, -1) -- (-6.02, -1.75) -- (-3.02, -1.75);
+    	\draw (2.98, 0) to[battery, l={$V_{CC}$}] (2.98, -1.75);
+    	\draw (5.98, -1) |- (2.98, -1.75);
+    	\draw (5.98, 1.75) -| (5.98, 2.75);
+    	\node[ocirc] at (7.98, 2.75){};
+    	\node[ocirc] at (7.98, -1.75){};
+    	\draw (5.98, 2.75) -- (7.98, 2.75);
+    	\draw (5.98, -1.75) -- (7.98, -1.75);
+    	\draw (-3.02, -1.75) -- (2.98, -1.75);
+        \node[ground] at (-0.02, -1.75){};
+    \end{tikzpicture}
+    }
+    \caption{circuito amplificador base común.}
+\end{figure}
 \end{frame}
-

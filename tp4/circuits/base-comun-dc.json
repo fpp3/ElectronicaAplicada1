@@ -1,0 +1,228 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "node",
+            "label": {
+                "value": "Q_1",
+                "anchor": "default",
+                "position": "default",
+                "distance": "0.12cm"
+            },
+            "position": {
+                "x": 0,
+                "y": -103.937
+            },
+            "rotation": 90,
+            "scale": {
+                "x": 1,
+                "y": -1
+            },
+            "id": "npn"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 113.386,
+                    "y": -103.937
+                },
+                {
+                    "x": 113.386,
+                    "y": 0
+                }
+            ],
+            "label": {
+                "value": "R_C",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": 0
+                },
+                {
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            "label": {
+                "value": "R_1",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": 0
+                },
+                {
+                    "x": -113.386,
+                    "y": -103.937
+                }
+            ],
+            "label": {
+                "value": "R_E",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "x": 113.386,
+                    "y": 0
+                }
+            ],
+            "label": {
+                "value": "R_2",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -72.189
+                },
+                {
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "|-"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": -103.937
+                },
+                {
+                    "x": -29.102,
+                    "y": -103.937
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 29.102,
+                    "y": -103.937
+                },
+                {
+                    "x": 113.386,
+                    "y": -103.937
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": 0
+                },
+                {
+                    "x": -113.386,
+                    "y": 66.142
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                null
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 28.347,
+                    "y": 66.142
+                },
+                {
+                    "x": -37.795,
+                    "y": 66.142
+                }
+            ],
+            "label": {
+                "value": "V_{CC}",
+                "distance": "0.12cm"
+            },
+            "id": "battery"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": 66.142
+                },
+                {
+                    "x": -37.795,
+                    "y": 66.142
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 28.346,
+                    "y": 66.142
+                },
+                {
+                    "x": 113.386,
+                    "y": 0
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        }
+    ]
+}
