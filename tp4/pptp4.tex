@@ -7,6 +7,8 @@
 \usepackage[sfdefault,light]{FiraSans}
 \usepackage{tikz}
 \usepackage{circuitikz}
+\usepackage{pgfplots}
+\usepackage[spanish]{babel}
 
 % Paleta oscuro + verde
 \definecolor{darkbg}{HTML}{0A0A0A}
@@ -35,8 +37,7 @@
     \usebeamerfont{title in head/foot}\insertshorttitle
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,rightskip=1em]{footline}%
-    \usebeamerfont{date in head/foot}\insertshortdate \hfill
-    \insertframenumber{} / \inserttotalframenumber
+    \usebeamerfont{date in head/foot}\hfill \insertshortdate \hspace{3em} \insertframenumber{} / \inserttotalframenumber
   \end{beamercolorbox}}%
   \vskip0pt%
 }
@@ -44,7 +45,9 @@
 % Aquí se reactivan los botones estándar de beamer (los de Madrid)
 \setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsubsectionnavigationsymbol\insertsectionnavigationsymbol\insertdocnavigationsymbol\insertbackfindforwardnavigationsymbol}
 
-\title{BJT: Configuracion Base Comun}
+\setbeamertemplate{frametitle continuation}{}
+
+\title[BJT Base Comun]{BJT: Configuracion Base Comun}
 \subtitle{Trabajo Practico N°4}
 \author[Grasso, Palombo, Prieto]{%
   \begin{tabular}{l}
