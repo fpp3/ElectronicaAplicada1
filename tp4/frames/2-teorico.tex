@@ -284,7 +284,7 @@ Y reemplazando esta última igualdad en la ecuación \ref{ec:malla-salida-cc}:
 Despejando para $V_{CB}$:
 \begin{align}
     V_{CC} - I_{CQ}R_C - V_{CBQ} + \frac{I_{CQ}}{\beta}R_B - V_{BB} &= 0 \nonumber \\[6pt]
-    V_{CBQ_{MES}} = V_{CC} - V_{BB} - I_{CQ_{MES}}(R_{CC})
+    V_{CBQ_{MES}} = V_{CC} - V_{BB} - I_{CQ_{MES}}(R_{CC}) \label{ec:vcb-mes}
 \end{align}
 \end{minipage}
 
@@ -329,12 +329,12 @@ Para determinar $V_{BB}$ se tiene que aplicar LKV a la malla de entrada.
 
 Igualando esta ecuación con la ecuación de $I_{CQ_{MES}}$ (Ec. \ref{ec:iq-mes}):
 
-\begin{gather*}
+\begin{gather}
     \frac{V_{CC}-V_{BB}}{R_{CC} + R_{CA}}= \frac{V_{BB}-V_{BE}}{\frac{R_B}{\beta}+R_E} \nonumber\\[6pt]
     V_{CC}(\frac{R_B}{\beta}+R_E) - V_{BB}(\frac{R_B}{\beta}+R_E) = V_{BB}(R_{CC}+R_{CA}) - V_{BE}(R_{CC}+R_{CA}) \nonumber\\[6pt]
     V_{BB} = \frac{V_{CC}(\frac{R_B}{\beta}+R_E) + V_{BE}(R_{CC}+R_{CA})}{\frac{R_B}{\beta}+R_E + R_{CC} + R_{CA}} \nonumber\\[6pt]
-    V_{BB} = \frac{V_{CC}(\frac{R_B}{\beta}+R_E) + V_{BE}(R_C-\frac{R_B}{\beta}+R_C||R_L)}{R_E + R_C + R_C||R_L}\\[6pt]
-\end{gather*}
+    V_{BB} = \frac{V_{CC}(\frac{R_B}{\beta}+R_E) + V_{BE}(R_C-\frac{R_B}{\beta}+R_C||R_L)}{R_E + R_C + R_C||R_L} \label{ec:vbb}
+\end{gather}
 
 $R_B$ se puede determinar considerando el siguiente criterio de diseño:
 
@@ -355,18 +355,21 @@ resultante de establecer el criterio de diseño:
 Ahora que los valores de $R_B$ y $V_{BB}$ se pueden determinar, se puede proceder a 
 despejar $R_1$ y  $R_2$ de las ecuaciones correspondientes, obteniendo:
 
-\begin{center}
-    \begin{minipage}{0.3\textwidth}
-    \begin{equation*}
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[][\textheight][]{0.45\textwidth}
+    \begin{equation}
         \boxed{R_1 = \frac{R_B}{1-\frac{V_{BB}}{V_{CC}}}}
-    \end{equation*}
+        \label{eq:r1}
+    \end{equation}
     \end{minipage}
-    \begin{minipage}{0.3\textwidth}
-    \begin{equation*}
+    \begin{minipage}[][\textheight][]{0.45\textwidth}
+    \begin{equation}
         \boxed{R_2 = \frac{V_{CC}R_B}{V_{BB}}}
-    \end{equation*}
+        \label{eq:r2}
+    \end{equation}
     \end{minipage}
-\end{center}
+\end{figure}
 \end{frame}
 
 \subsection{Pequeña señal}
