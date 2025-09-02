@@ -68,7 +68,7 @@
 \AtBeginSection[]
 {
   \begin{frame}{Tabla de Contenidos}
-    \tableofcontents[currentsection]
+    \tableofcontents[currentsection, hideothersubsections]
   \end{frame}
 }
 
@@ -76,7 +76,7 @@
 
 \frame{\titlepage}
 \begin{frame}{Tabla de Contenidos}
-\tableofcontents
+  \tableofcontents[hideothersubsections]
 \end{frame}
 \input{frames/1-introduccion.tex}
 \input{frames/2-teorico.tex}
