@@ -248,13 +248,15 @@
 
 \subsection{Normalización}
 \begin{frame}[allowframebreaks]{Normalización de Resistores}
-  Los valores comerciales mas cercanos a los valores calculados de $R_1$ y $R_2$ son:
-  \begin{block}{Valores Normalizados}
-    \begin{equation*}
-      R_1 = 11979\Omega \to R_1 = 12K\Omega \quad R_2 = 95768\Omega \to R_2 = 100K\Omega
-    \end{equation*}
-  \end{block}
+  \begin{minipage}[][\textheight][p]{\textwidth}
+    Los valores comerciales mas cercanos a los valores calculados de $R_1$ y $R_2$ son:
+    \begin{block}{Valores Normalizados}
+      \begin{equation*}
+        R_1 = 11979\Omega \to R_1 = 12K\Omega \quad R_2 = 95768\Omega \to R_2 = 100K\Omega
+      \end{equation*}
+    \end{block}
   Es necesario volver a calcular el punto Q para corroborar que este dentro del 10\% de margen permitido.
+  \end{minipage}
 
   Usando (Ec. \ref{ec:thevenin-rb}) y (Ec. \ref{ec:thevenin-vbb}):
   \begin{figure}[!ht]
@@ -421,7 +423,7 @@
     Podemos calcular las impedancias del amplificador:\\
     \centering
     \begin{minipage}[][\textheight][t]{0.45\textwidth}
-      Usando REF ZI HIB:
+      Usando (Ec. \ref{eq:hib}) y (Ec. \ref{eq:zi}):
       \begin{align*}
         h_{ib} &= \frac{25mV}{I_{CQ}}\\[6pt]
         Z_i &= R_E // h_{ib}\\[6pt]
@@ -431,7 +433,7 @@
     \end{minipage}
     \hfill
     \begin{minipage}[][\textheight][t]{0.45\textwidth}
-      Usando REF ZO:
+      Usando (Ec. \ref{eq:zo}):
       \begin{align*}
         Z_o &\approx R_C\\[6pt]
         Z_o &\approx 2K2\Omega
@@ -444,7 +446,7 @@
     Podemos calcular las ganancias del amplificador:\\
     \centering
     \begin{minipage}[t]{0.45\textwidth}
-      Usando REF AI:
+      Usando (Ec. \ref{eq:ai}):
       \small
       \begin{align*}
         A_i &= \frac{R_C}{R_C + R_L} \cdot \frac{R_E}{R_E + h_{ib}}\\[6pt]
@@ -454,7 +456,7 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.45\textwidth}
-      Usando REF AV:
+      Usando (Ec. \ref{eq:av}):
       \small
       \begin{align*}
         A_v &= \frac{R_C // R_L}{h_{ib}}\\[6pt]

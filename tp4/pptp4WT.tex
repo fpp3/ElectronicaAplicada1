@@ -1,44 +1,37 @@
 \documentclass[]{beamer}
 
-% Tema base
 \usetheme[numbering=fraction,progressbar=frametitle]{metropolis}
 
-% Fuente y paquetes
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[sfdefault,light]{FiraSans} % Requiere XeLaTeX/LuaLaTeX para Fira
+\usepackage[sfdefault,light]{FiraSans}
 \usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage{pgfplots}
 \usepackage[spanish]{babel}
-\usepackage{booktabs}
-\usepackage{ragged2e}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{graphicx}
+\usepackage{booktabs}   % \toprule \midrule \bottomrule
+\usepackage{ragged2e}   % \justifying
+\usepackage{caption}    % \captionof
+\usepackage{subcaption} % subfiguras
+\usepackage{graphicx}   % \includegraphics
 
-% Paleta clara con acentos "electrónicos"
-% Primario: azul UTN suave; Secundario: verde osciloscopio
-\definecolor{lightbg}{HTML}{FFFFFF}
-\definecolor{softgray}{HTML}{F3F4F6}
-\definecolor{ink}{HTML}{0F172A}       % texto principal (gris-azulado oscuro)
-\definecolor{primary}{HTML}{2563EB}   % azul
-\definecolor{secondary}{HTML}{10B981} % verde
+% Paleta claro + verde
+\definecolor{darkbg}{HTML}{F9F9F9}   % fondo claro
+\definecolor{darkgray}{HTML}{E6E6E6} % gris claro
+\definecolor{darkgreen}{HTML}{33AA66} % verde suave
 
-% Colores Beamer
-\setbeamercolor{normal text}{fg=ink,bg=lightbg}
-\setbeamercolor{frametitle}{fg=primary,bg=softgray}
-\setbeamercolor{progress bar}{fg=secondary,bg=softgray}
-\setbeamercolor{alerted text}{fg=primary}
-\setbeamercolor{title separator}{fg=secondary}
-\setbeamercolor{block title}{bg=primary!10,fg=ink}
-\setbeamercolor{block body}{bg=softgray,fg=ink}
-\setbeamercolor{footline}{bg=softgray,fg=primary}
+\setbeamercolor{normal text}{fg=black,bg=darkbg}
+\setbeamercolor{frametitle}{fg=darkgreen,bg=darkgray}
+\setbeamercolor{progress bar}{fg=darkgreen,bg=darkgray}
+\setbeamercolor{alerted text}{fg=darkgreen}
+\setbeamercolor{title separator}{fg=darkgreen}
+\setbeamercolor{block title}{bg=darkgreen,fg=white}
+\setbeamercolor{block body}{bg=darkgray,fg=black}
+\setbeamercolor{footline}{bg=darkgray,fg=darkgreen}
 
-% Separador de título
-\setbeamertemplate{title separator}{\color{secondary}\rule{\linewidth}{1.2pt}}
+\setbeamertemplate{title separator}{\color{darkgreen}\rule{\linewidth}{1.2pt}}
 
-% Pie de página estilo Madrid (claro)
+% Pie de página estilo Madrid
 \setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
@@ -54,26 +47,24 @@
   \vskip0pt%
 }
 
-% Botones de navegación estándar
+% Aquí se reactivan los botones estándar de beamer (los de Madrid)
 \setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsubsectionnavigationsymbol\insertsectionnavigationsymbol\insertdocnavigationsymbol\insertbackfindforwardnavigationsymbol}
 
 \setbeamertemplate{frametitle continuation}{}
 
-% ---- Datos de la presentación (idénticos) ----
 \title[BJT Base Común]{BJT: Configuración Base Común}
-\subtitle{Trabajo Práctico N°4}
+\subtitle{Trabajo Practico N°4}
 \author[Grasso, Palombo, Prieto]{%
   \begin{tabular}{l}
-    Gaston Grasso -- 401892 \\
+      Gaston Grasso -- 401892 \\
     Franco Palombo -- 401910 \\
-    Angelo Prieto -- 401012
+      Angelo Prieto -- 401012
   \end{tabular}
 }
 \institute[UTN - FRC]{Universidad Tecnológica Nacional, Facultad Regional Córdoba}
 \date[2025]{03/09/2025}
 \logo{\includegraphics[width=.06\textwidth]{images/UTN_logo.png}}
 
-% TOC por sección
 \AtBeginSection[]
 {
   \begin{frame}{Tabla de Contenidos}
@@ -84,12 +75,9 @@
 \begin{document}
 
 \frame{\titlepage}
-
 \begin{frame}{Tabla de Contenidos}
   \tableofcontents[hideothersubsections]
 \end{frame}
-
-% ---- Contenido (idéntico) ----
 \input{frames/1-introduccion.tex}
 \input{frames/2-teorico.tex}
 \input{frames/3-diseno.tex}
@@ -97,4 +85,3 @@
 \input{frames/5-desafios.tex}
 
 \end{document}
-
