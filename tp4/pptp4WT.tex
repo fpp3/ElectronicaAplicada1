@@ -1,0 +1,100 @@
+\documentclass[]{beamer}
+
+% Tema base
+\usetheme[numbering=fraction,progressbar=frametitle]{metropolis}
+
+% Fuente y paquetes
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sfdefault,light]{FiraSans} % Requiere XeLaTeX/LuaLaTeX para Fira
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+\usepackage[spanish]{babel}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+
+% Paleta clara con acentos "electrónicos"
+% Primario: azul UTN suave; Secundario: verde osciloscopio
+\definecolor{lightbg}{HTML}{FFFFFF}
+\definecolor{softgray}{HTML}{F3F4F6}
+\definecolor{ink}{HTML}{0F172A}       % texto principal (gris-azulado oscuro)
+\definecolor{primary}{HTML}{2563EB}   % azul
+\definecolor{secondary}{HTML}{10B981} % verde
+
+% Colores Beamer
+\setbeamercolor{normal text}{fg=ink,bg=lightbg}
+\setbeamercolor{frametitle}{fg=primary,bg=softgray}
+\setbeamercolor{progress bar}{fg=secondary,bg=softgray}
+\setbeamercolor{alerted text}{fg=primary}
+\setbeamercolor{title separator}{fg=secondary}
+\setbeamercolor{block title}{bg=primary!10,fg=ink}
+\setbeamercolor{block body}{bg=softgray,fg=ink}
+\setbeamercolor{footline}{bg=softgray,fg=primary}
+
+% Separador de título
+\setbeamertemplate{title separator}{\color{secondary}\rule{\linewidth}{1.2pt}}
+
+% Pie de página estilo Madrid (claro)
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,leftskip=1em]{footline}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.5ex,dp=1ex,center]{footline}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,rightskip=1em]{footline}%
+    \usebeamerfont{date in head/foot}\hfill \insertshortdate \hspace{3em} \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Botones de navegación estándar
+\setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol\insertframenavigationsymbol\insertsubsectionnavigationsymbol\insertsectionnavigationsymbol\insertdocnavigationsymbol\insertbackfindforwardnavigationsymbol}
+
+\setbeamertemplate{frametitle continuation}{}
+
+% ---- Datos de la presentación (idénticos) ----
+\title[BJT Base Común]{BJT: Configuración Base Común}
+\subtitle{Trabajo Práctico N°4}
+\author[Grasso, Palombo, Prieto]{%
+  \begin{tabular}{l}
+    Gaston Grasso -- 401892 \\
+    Franco Palombo -- 401910 \\
+    Angelo Prieto -- 401012
+  \end{tabular}
+}
+\institute[UTN - FRC]{Universidad Tecnológica Nacional, Facultad Regional Córdoba}
+\date[2025]{03/09/2025}
+\logo{\includegraphics[width=.06\textwidth]{images/UTN_logo.png}}
+
+% TOC por sección
+\AtBeginSection[]
+{
+  \begin{frame}{Tabla de Contenidos}
+    \tableofcontents[currentsection, hideothersubsections]
+  \end{frame}
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Tabla de Contenidos}
+  \tableofcontents[hideothersubsections]
+\end{frame}
+
+% ---- Contenido (idéntico) ----
+\input{frames/1-introduccion.tex}
+\input{frames/2-teorico.tex}
+\input{frames/3-diseno.tex}
+\input{frames/4-implementacion.tex}
+\input{frames/5-desafios.tex}
+
+\end{document}
+
