@@ -471,8 +471,12 @@ base común.
 \begin{align*}
      h_{fb} &= \frac{i_c}{-i_e} \bigg|_{v_{cb}=0} = \frac{i_{b}h_{fe}}{-i_b({h_{fe}+1})} \approx -1
 \end{align*}
- 
+
 $h_{rb}$ y $h_{ob}$ son despreciables.
+\end{frame}
+
+\begin{frame}{Análisis Para pequeña señal}
+ 
 \begin{figure}[ht!]
     \centering
     \resizebox{\textwidth}{!}{
@@ -510,14 +514,22 @@ $h_{rb}$ y $h_{ob}$ son despreciables.
     }
     \caption{circuito equivalente para CA.}
 \end{figure}
+\end{frame}
 
-\begin{align*}
+\begin{frame}{Análisis Para pequeña señal}
+\centering
+\resizebox{0.55\textwidth}{!}{$
+\begin{aligned}
     Z_i &= \frac{v_i}{i_i} = \frac{v_i}{\frac{v_i}{R_E || h_{ib}}} = R_E || h_{ib} \\[6pt]
     Z_o &= \frac{v_o}{i_o} = \frac{v_o}{\frac{v_o}{R_C || R_L}} = R_C || R_L \\[6pt]
-    A_v &= \frac{v_o}{v_i} = \frac{-h_{fb} \ \cdot i_e \cdot R_C || R_L}{i_e\cdot h_{ib}} \approx \frac{R_C||R_L}{h_{ib}} \\[6pt]
-    A_i &= \frac{i_o}{i_i} = \frac{\frac{v_o}{R_L}}{\frac{v_i}{Z_i}} = \frac{v_o}{v_i}\cdot \frac{Z_i}{R_L} = A_v \cdot \frac{Z_i}{R_l} = \\[6pt]
-    &= \frac{R_C R_L}{R_C + R_L} \cdot \frac{1}{h_{ib}} \cdot \frac{R_E h_{ib}}{R_E + h_{ib}} \cdot \frac{1}{R_L} = \\[6pt]
+    A_v &= \frac{v_o}{v_i} = \frac{-h_{fb}\cdot i_e \cdot (R_C || R_L)}{i_e\cdot h_{ib}} 
+    \approx \frac{R_C||R_L}{h_{ib}} \\[6pt]
+    A_i &= \frac{i_o}{i_i} = \frac{\frac{v_o}{R_L}}{\frac{v_i}{Z_i}} 
+    = \frac{v_o}{v_i}\cdot \frac{Z_i}{R_L} 
+    = A_v \cdot \frac{Z_i}{R_l} \\[6pt]
+    &= \frac{R_C R_L}{R_C + R_L} \cdot \frac{1}{h_{ib}} 
+    \cdot \frac{R_E h_{ib}}{R_E + h_{ib}} \cdot \frac{1}{R_L} \\[6pt]
     &= \frac{R_C}{R_C+R_L} \cdot \frac{R_E}{R_E + h_{ib}}
-\end{align*}
-
+\end{aligned}
+$}
 \end{frame}
