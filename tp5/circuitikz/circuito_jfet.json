@@ -1,0 +1,242 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": 75.591
+                },
+                {
+                    "x": -226.772,
+                    "y": -37.795
+                }
+            ],
+            "label": {
+                "value": "v_i",
+                "distance": "0.12cm"
+            },
+            "id": "sinusoidal voltage source"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": -37.795
+                },
+                {
+                    "x": -113.386,
+                    "y": -37.795
+                }
+            ],
+            "label": {
+                "value": "C_i",
+                "distance": "0.12cm"
+            },
+            "id": "capacitor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": -18.898
+                },
+                {
+                    "x": -113.386,
+                    "y": 75.591
+                }
+            ],
+            "label": {
+                "value": "R_G",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 0,
+                "y": -48
+            },
+            "id": "njfet"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -18.898
+                },
+                {
+                    "x": 0,
+                    "y": 75.591
+                }
+            ],
+            "label": {
+                "value": "R_S",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -18.898
+                },
+                {
+                    "x": 75.591,
+                    "y": -18.898
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": -18.898
+                },
+                {
+                    "x": -113.386,
+                    "y": -37.795
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 75.591,
+                    "y": -18.898
+                },
+                {
+                    "x": 75.591,
+                    "y": 75.591
+                }
+            ],
+            "label": {
+                "value": "C_S",
+                "distance": "0.12cm"
+            },
+            "id": "capacitor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": -37.795
+                },
+                {
+                    "x": -37.795,
+                    "y": -37.795
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 151.181,
+                    "y": -85.039
+                },
+                {
+                    "x": 151.181,
+                    "y": -9.449
+                }
+            ],
+            "label": {
+                "value": "V_{DD}",
+                "distance": "0.12cm"
+            },
+            "id": "battery1"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": 75.591
+                },
+                {
+                    "x": 151.181,
+                    "y": -9.449
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -171.591
+                },
+                {
+                    "x": 0,
+                    "y": -77.102
+                }
+            ],
+            "label": {
+                "value": "R_D",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -171.591
+                },
+                {
+                    "x": 151.181,
+                    "y": -85.039
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 0,
+                "y": 75.591
+            },
+            "id": "ground"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+	% Paths, nodes and wires:
+	\draw (-6, -2) to[sinusoidal voltage source, l={$v_i$}] (-6, 1);
+	\draw (-6, 1) to[capacitor, l={$C_i$}] (-3, 1);
+	\draw (-3, 0.5) to[american resistor, l={$R_G$}] (-3, -2);
+	\node[njfet] at (0, 1.27){};
+	\draw (0, 0.5) to[american resistor, l={$R_S$}] (0, -2);
+	\draw (0, 0.5) -- (2, 0.5);
+	\draw (-3, 0.5) -| (-3, 1);
+	\draw (2, 0.5) to[capacitor, l={$C_S$}] (2, -2);
+	\draw (-3, 1) -- (-1, 1);
+	\draw (4, 2.25) to[battery1, l={$V_{DD}$}] (4, 0.25);
+	\draw (-6, -2) -| (4, 0.25);
+	\draw (0, 4.54) to[american resistor, l={$R_D$}] (0, 2.04);
+	\draw (0, 4.54) -| (4, 2.25);
+	\node[ground] at (0, -2){};
+\end{tikzpicture}

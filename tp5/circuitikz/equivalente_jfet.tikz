@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+	% Paths, nodes and wires:
+	\draw (-6, -1.5) to[sinusoidal voltage source, l={$v_i$}] (-6, 1.5);
+	\draw (-3, -1.5) to[american resistor, l={$R_G$}] (-3, 1.5);
+	\draw (3, -1.5) to[american resistor, l={$r_{ds}$}] (3, 1.5);
+	\draw (0, -1.5) to[sinusoidal voltage source, l={$g_mv_{gs}$}] (0, 1.5);
+	\draw (6, -1.5) to[american resistor, l={$R_D$}] (6, 1.5);
+	\draw (-6, -1.5) -- (6, -1.5);
+	\draw (-6, 1.5) -- (-3, 1.5);
+	\draw (0, 1.5) -- (6, 1.5);
+	\node[ground] at (-1.5, -1.5){};
+	\node[circ] at (-3, 1.5){};
+	\node[circ] at (3, 1.5){};
+	\node[circ] at (-1.5, -1.5){};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (-3.125, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (-3.5, 2.25){$G$};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.715cm] at (3, 1.875){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (2.625, 2.25){$D$};
+	\node[shape=rectangle, minimum width=0.715cm, minimum height=0.686cm] at (-1.5, -1.14){} node[anchor=north west, align=left, text width=0.327cm, inner sep=6pt] at (-1.875, -0.779){$S$};
+\end{tikzpicture}

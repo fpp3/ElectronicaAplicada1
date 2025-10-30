@@ -1,0 +1,238 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": 56.693
+                },
+                {
+                    "x": -226.772,
+                    "y": -56.693
+                }
+            ],
+            "label": {
+                "value": "v_i",
+                "distance": "0.12cm"
+            },
+            "id": "sinusoidal voltage source"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": -113.386,
+                    "y": 56.693
+                },
+                {
+                    "x": -113.386,
+                    "y": -56.693
+                }
+            ],
+            "label": {
+                "value": "R_G",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 113.386,
+                    "y": 56.693
+                },
+                {
+                    "x": 113.386,
+                    "y": -56.693
+                }
+            ],
+            "label": {
+                "value": "r_{ds}",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 0,
+                    "y": 56.693
+                },
+                {
+                    "x": 0,
+                    "y": -56.693
+                }
+            ],
+            "label": {
+                "value": "g_mv_{gs}",
+                "distance": "0.12cm"
+            },
+            "id": "sinusoidal voltage source"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 226.772,
+                    "y": 56.693
+                },
+                {
+                    "x": 226.772,
+                    "y": -56.693
+                }
+            ],
+            "label": {
+                "value": "R_D",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": 56.693
+                },
+                {
+                    "x": 226.772,
+                    "y": 56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": -226.772,
+                    "y": -56.693
+                },
+                {
+                    "x": -113.386,
+                    "y": -56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -56.693
+                },
+                {
+                    "x": 226.772,
+                    "y": -56.693
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": -56.693,
+                "y": 56.693
+            },
+            "id": "ground"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": -113.386,
+                "y": -56.693
+            },
+            "id": "circ"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 113.386,
+                "y": -56.693
+            },
+            "id": "circ"
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": -56.693,
+                "y": 56.693
+            },
+            "id": "circ"
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": -118.11,
+                "y": -70.866
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 28.346
+            },
+            "text": {
+                "text": "$G$",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": 113.386,
+                "y": -70.866
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 28.346
+            },
+            "text": {
+                "text": "$D$",
+                "showPlaceholderText": true
+            }
+        },
+        {
+            "type": "rect",
+            "position": {
+                "x": -56.693,
+                "y": 43.071
+            },
+            "stroke": {
+                "opacity": 0
+            },
+            "size": {
+                "x": 28.346,
+                "y": 27.244
+            },
+            "text": {
+                "text": "$S$",
+                "showPlaceholderText": true
+            }
+        }
+    ]
+}

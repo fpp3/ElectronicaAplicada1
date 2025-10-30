@@ -1,0 +1,158 @@
+{
+    "version": "0.1",
+    "components": [
+        {
+            "type": "node",
+            "position": {
+                "x": 0,
+                "y": -48
+            },
+            "id": "njfet"
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -171.591
+                },
+                {
+                    "x": 0,
+                    "y": -77.102
+                }
+            ],
+            "label": {
+                "value": "R_D",
+                "distance": "0.12cm"
+            },
+            "id": "american resistor"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -171.591
+                },
+                {
+                    "x": 94.488,
+                    "y": -85.039
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "path",
+            "points": [
+                {
+                    "x": 94.488,
+                    "y": -85.039
+                },
+                {
+                    "x": 94.488,
+                    "y": -9.449
+                }
+            ],
+            "label": {
+                "value": "V_{DD}",
+                "distance": "0.12cm"
+            },
+            "id": "battery1"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 75.591,
+                    "y": -28.346
+                },
+                {
+                    "x": 113.387,
+                    "y": -66.142
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "--"
+            ],
+            "endArrow": "latex"
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -37.795
+                },
+                {
+                    "x": -75.591,
+                    "y": 75.591
+                },
+                {
+                    "x": 0,
+                    "y": 75.591
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|",
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": 75.591
+                },
+                {
+                    "x": 94.488,
+                    "y": -9.449
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "wire",
+            "points": [
+                {
+                    "x": 0,
+                    "y": -18.898
+                },
+                {
+                    "x": 0,
+                    "y": 75.591
+                }
+            ],
+            "stroke": {
+                "width": "0.4pt"
+            },
+            "directions": [
+                "-|"
+            ]
+        },
+        {
+            "type": "node",
+            "position": {
+                "x": 0,
+                "y": 75.591
+            },
+            "id": "ground"
+        }
+    ]
+}
